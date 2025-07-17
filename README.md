@@ -59,16 +59,10 @@ If you are looking for the details of this template package's function, take a l
 )
 ```
 
-## Donate with [PayPal](https://www.paypal.com/donate/?hosted_button_id=4G9X8TDNYYNKG)
+## Like it?
 
-If you think this template is useful and saves you a lot of work and nerves (Word and LaTex can be very tiring) and lets you sleep better, then a small donation would be very nice.
-
-<a href="https://www.paypal.com/donate/?hosted_button_id=4G9X8TDNYYNKG" target="_blank">
-  <!--
-    https://github.com/stefan-niedermann/paypal-donate-button
-  -->
-  <img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" style="height: 90px; width: 217px;" alt="Donate with PayPal"/>
-</a>
+⭐ Star on [**GitHub**](https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis)  
+☕ Support via [**PayPal**](https://www.paypal.com/donate/?hosted_button_id=4G9X8TDNYYNKG)
 
 <!-- URLs for docs -->
 
