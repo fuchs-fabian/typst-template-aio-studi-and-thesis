@@ -41,7 +41,7 @@ If you are looking for the details of this template package's function, take a l
 ## Example configuration
 
 ```typ
-#import "@preview/aio-studi-and-thesis:0.1.1": *
+#import "@preview/aio-studi-and-thesis:0.1.2": *
 
 #show: project.with(
   lang: "de",
@@ -64,6 +64,6 @@ If you are looking for the details of this template package's function, take a l
 
 <!-- URLs for docs -->
 
-[example PDF (DE)]: https://github.com/typst/packages/blob/main/packages/preview/aio-studi-and-thesis/0.1.1/docs/example-de-thesis.pdf
-[german manual]: https://github.com/typst/packages/blob/main/packages/preview/aio-studi-and-thesis/0.1.1/docs/manual-de.pdf
-[english manual]: https://github.com/typst/packages/blob/main/packages/preview/aio-studi-and-thesis/0.1.1/docs/manual-en.pdf
+[example PDF (DE)]: https://github.com/typst/packages/blob/main/packages/preview/aio-studi-and-thesis/0.1.2/docs/example-de-thesis.pdf
+[german manual]: https://github.com/typst/packages/blob/main/packages/preview/aio-studi-and-thesis/0.1.2/docs/manual-de.pdf
+[english manual]: https://github.com/typst/packages/blob/main/packages/preview/aio-studi-and-thesis/0.1.2/docs/manual-en.pdf
