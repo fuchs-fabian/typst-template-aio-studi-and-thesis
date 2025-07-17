@@ -94,7 +94,7 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
-  font: "Roboto",
+  font: default-font,
   font-size: 11pt,
   hyphenate: false,
 

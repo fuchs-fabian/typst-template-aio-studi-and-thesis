@@ -19,7 +19,15 @@
   }
 }
 
-// Default colors
+// Default font
+#let default-font = (
+  "Roboto",   // typst.app
+  "Calibri",  // Windows
+  "Arial",    // macOS
+  "Carlito",  // Linux
+)
+
+// Colors
 #let blue = rgb("#009fe3")
 #let dark-blue = rgb("#152f4e")
 #let light-blue = rgb("#e8eff7")

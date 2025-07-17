@@ -26,7 +26,7 @@
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
-  font: "Roboto",
+  font: default-font,
   font-size: 11pt,
   hyphenate: false,
 
@@ -311,7 +311,7 @@ Außer Sie greifen natürlich auf Word zurück. Dann gilt: Viel Erfolg und reich
 
 == Schrift
 
-Die Schriftart in dieser Vorlage ist "*Roboto*". Diese können Sie bei Bedarf einfach anpassen.
+Wenn die Schriftart *Roboto* existiert, wird diese standardmäßig verwendet. Passen Sie die Schriftart bei Bedarf an.
 
 Die voreingestellte Schriftgröße ist *11pt*.
 
