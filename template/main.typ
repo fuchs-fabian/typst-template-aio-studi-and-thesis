@@ -103,6 +103,8 @@
   list-of-attachements: attachements()
 )
 
+#show: additional-styling
+
 = Einleitung<einleitung>
 
 #introduction()
