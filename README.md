@@ -38,8 +38,6 @@ The [example PDF (DE)] contains thesis writing advice (in German). Attention, th
 
 If you are looking for the details of this template package's function, take a look at the [german manual] or the [english manual].
 
-> `Roboto` is used as the default font. Please note accordingly if you want to use exactly this font. Otherwise, please change it. This may be necessary if you do not use Typst via the web app.
-
 ## Example configuration
 
 ```typ
