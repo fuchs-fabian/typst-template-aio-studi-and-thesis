@@ -1,4 +1,4 @@
-// Validation if content is none or empty
+// Validation if content is not none and not empty
 #let is-not-none-or-empty(content) = if content != none and content != "" { return true } else { return false }
 
 // Validation if dict contains a specified key

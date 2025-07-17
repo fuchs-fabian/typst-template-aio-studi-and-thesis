@@ -254,12 +254,13 @@
     ]
   }
 
+  counter(page).update(1)
+
   // Abstract
   if is-not-none-or-empty(abstract) {
     page(
       numbering: "I"
     )[
-      #counter(page).update(1)
       #heading(depth: 1)[ #txt-abstract ]
       #abstract
     ]
@@ -269,8 +270,6 @@
   page(
     numbering: none
   )[
-    #if is-not-none-or-empty(abstract) == false { counter(page).update(1) }
-      
     #show outline.entry.where(level: 1): it => {
       v(1.5em, weak: true)
       upper(strong(it))
