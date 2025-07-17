@@ -2,7 +2,6 @@
 
 #import "abstract.typ": abstract
 #import "abbreviations.typ": abbreviations
-#import "literature_and_bibliography.typ": literature-and-bibliography
 #import "attachements.typ": attachements
 
 // Kapitel
@@ -35,7 +34,7 @@
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
-  font: "Roboto",
+  font: default-font,
   font-size: 11pt,
   hyphenate: false,
 
@@ -85,8 +84,8 @@
   abstract: abstract(), // Setze es auf none, wenn es nicht angezeigt werden soll
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,                     // Wenn `thesis-compliant` true ist, dann wird es auf 4 gesetzt wenn hier none steht
   show-list-of-figures: false,      // Wird immer angezeigt, wenn `thesis-compliant` true ist
   show-list-of-abbreviations: true, // Achtung: Schlägt fehl wenn glossary leer ist und trotzdem dargestellt werden soll!
   list-of-abbreviations: abbreviations(),
@@ -99,9 +98,11 @@
   ),
   show-list-of-tables: true,   // Setze es auf false, wenn es nicht angezeigt werden soll
   show-list-of-todos: true,    // Setze es auf false, wenn es nicht angezeigt werden soll
-  literature-and-bibliography: literature-and-bibliography(),
+  literature-and-bibliography: bibliography(bib-file, title: none, style: "ieee", full: false),
   list-of-attachements: attachements()
 )
+
+#show: additional-styling
 
 = Einleitung<einleitung>
 
@@ -118,6 +119,12 @@
 
 // Referenz zu einer anderen Überschrift
 @einleitung
+
+// Zitieren aus der Bibliographie
+Siehe @noauthor_bibliography_nodate
+
+// Verwendung von Inhalten aus der Bibliographie
+#bib.noauthor_citegeist_nodate.fields.title
 
 // TODO anlegen
 #todo[Das ist ein Beispiel]

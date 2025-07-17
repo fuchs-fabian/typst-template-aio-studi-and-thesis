@@ -94,7 +94,7 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
-  font: "Roboto",
+  font: default-font,
   font-size: 11pt,
   hyphenate: false,
 
@@ -142,8 +142,8 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
   abstract: none,
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,   // none to disable
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (

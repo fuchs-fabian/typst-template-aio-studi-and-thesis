@@ -41,7 +41,7 @@ jobs:
           fi
 
       - name: Build package
-        # Due to the Roboto font, it is not possible for the PDFs to be generated with the correct font.
+        # It is possible that the PDFs are not generated with the correct font.
         run: |
           just doc
           just package out

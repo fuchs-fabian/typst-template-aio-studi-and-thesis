@@ -1,4 +1,4 @@
-// Validation if content is none or empty
+// Validation if content is not none and not empty
 #let is-not-none-or-empty(content) = if content != none and content != "" { return true } else { return false }
 
 // Validation if dict contains a specified key
@@ -19,7 +19,15 @@
   }
 }
 
-// Default colors
+// Default font
+#let default-font = (
+  "Roboto",   // typst.app
+  "Calibri",  // Windows
+  "Arial",    // macOS
+  "Carlito",  // Linux
+)
+
+// Colors
 #let blue = rgb("#009fe3")
 #let dark-blue = rgb("#152f4e")
 #let light-blue = rgb("#e8eff7")

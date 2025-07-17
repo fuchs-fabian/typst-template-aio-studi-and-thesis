@@ -7,8 +7,7 @@
   title: none,
   img: none,
   body
-) = {  
-  show par: set block(spacing: 1em)
+) = {
   rect(fill: background-color, stroke: none, inset: 1.3em)[
     #text(1.2em, fill: primary-color, weight: "bold", title)
     
@@ -31,7 +30,6 @@
 ) = {
   import "dictionary.typ": txt-author, txt-authors
   
-  show par: set block(spacing: 1em)
   rect(fill: background-color, stroke: none, inset: 0.5em)[
     #text[ #emph(if plural { txt-authors } else { txt-author }): ]
     #text(weight: "bold", body)

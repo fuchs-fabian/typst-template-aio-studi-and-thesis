@@ -30,7 +30,7 @@
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
-  font: "Roboto",
+  font: default-font,
   font-size: 11pt,
   hyphenate: false,
 
@@ -78,8 +78,8 @@
   abstract: none,
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,   // none to disable
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
@@ -254,33 +254,35 @@
     ]
   }
 
+  counter(page).update(1)
+
   // Abstract
   if is-not-none-or-empty(abstract) {
     page(
       numbering: "I"
     )[
-      #counter(page).update(1)
       #heading(depth: 1)[ #txt-abstract ]
       #abstract
     ]
   }
 
   // Table of contents (TOC)
-  page(
-    numbering: none
-  )[
-    #if is-not-none-or-empty(abstract) == false { counter(page).update(1) }
-      
-    #show outline.entry.where(level: 1): it => {
-      v(1.5em, weak: true)
-      upper(strong(it))
-    }
+  if thesis-compliant or is-not-none-or-empty(depth-toc) {
+    page(
+      numbering: none
+    )[
+      #show outline.entry.where(level: 1): it => {
+        v(1.5em, weak: true)
+        upper(strong(it))
+      }
 
-    #outline(
-      indent: outlines-indent,
-      depth: depth-toc
-    ) 
-  ]
+      #outline(
+        indent: outlines-indent,
+        // If `depth-toc` is set to `none`, then it will be set to 4 if `thesis-compliant` is true
+        depth: if is-not-none-or-empty(depth-toc) { depth-toc } else { 4 },
+      )
+    ]
+  }
 
   // List of Figures
   if thesis-compliant or show-list-of-figures {

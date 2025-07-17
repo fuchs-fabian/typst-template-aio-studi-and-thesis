@@ -26,7 +26,7 @@
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
-  font: "Roboto",
+  font: default-font,
   font-size: 11pt,
   hyphenate: false,
 
@@ -78,8 +78,8 @@
   ],
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,
   show-list-of-figures: false, // Wird trotzdem angezeigt, da es i.d.R. Pflicht ist
   show-list-of-abbreviations: true, // Taucht nur auf, wenn tatsächlich mit gls Abkürzungen im Text aufgerufen werden
   list-of-abbreviations: (
@@ -113,7 +113,7 @@
   ),
   show-list-of-tables: true,
   show-list-of-todos: true,
-  literature-and-bibliography: [ // Muss selbst implementiert werden, um den gewünschten Anforderungen zu entsprechen
+  literature-and-bibliography: [ // Im Template ist ein Beispiel enthalten
     Hier ist meine Literatur...
   ],
   list-of-attachements: (
@@ -192,7 +192,7 @@ Die Überschriften der Verzeichnisse (z. B. Abbildungsverzeichnis) werden nicht 
 
 Bitte informieren Sie sich darüber hinaus, ob in Ihrem Fach Abbildungen und Tabellen bei der Berechnung der vorgegebenen Seitananzahl berücksichtigt werden. Dies macht es erforderlich, dass ein Fork von dem #gls("repo-vorlage", long: true) erstellt werden muss. Dies ist aktuell nicht anpassbar.
 
-= Formattierung
+= Formatierung
 
 Dieses Kapitel thematisiert die Formatierung und Gestaltung der Vorlage für wissenschaftliche Arbeiten.
 
@@ -311,7 +311,7 @@ Außer Sie greifen natürlich auf Word zurück. Dann gilt: Viel Erfolg und reich
 
 == Schrift
 
-Die Schriftart in dieser Vorlage ist "*Roboto*". Diese können Sie bei Bedarf einfach anpassen.
+Wenn die Schriftart *Roboto* existiert, wird diese standardmäßig verwendet. Passen Sie die Schriftart bei Bedarf an.
 
 Die voreingestellte Schriftgröße ist *11pt*.
 
