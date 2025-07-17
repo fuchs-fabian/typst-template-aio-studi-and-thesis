@@ -78,8 +78,8 @@
   abstract: none,
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,   // none to disable
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
@@ -267,19 +267,22 @@
   }
 
   // Table of contents (TOC)
-  page(
-    numbering: none
-  )[
-    #show outline.entry.where(level: 1): it => {
-      v(1.5em, weak: true)
-      upper(strong(it))
-    }
+  if thesis-compliant or is-not-none-or-empty(depth-toc) {
+    page(
+      numbering: none
+    )[
+      #show outline.entry.where(level: 1): it => {
+        v(1.5em, weak: true)
+        upper(strong(it))
+      }
 
-    #outline(
-      indent: outlines-indent,
-      depth: depth-toc
-    ) 
-  ]
+      #outline(
+        indent: outlines-indent,
+        // If `depth-toc` is set to `none`, then it will be set to 4 if `thesis-compliant` is true
+        depth: if is-not-none-or-empty(depth-toc) { depth-toc } else { 4 },
+      )
+    ]
+  }
 
   // List of Figures
   if thesis-compliant or show-list-of-figures {

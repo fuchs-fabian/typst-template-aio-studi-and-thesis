@@ -78,8 +78,8 @@
   ],
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,
   show-list-of-figures: false, // Wird trotzdem angezeigt, da es i.d.R. Pflicht ist
   show-list-of-abbreviations: true, // Taucht nur auf, wenn tatsächlich mit gls Abkürzungen im Text aufgerufen werden
   list-of-abbreviations: (

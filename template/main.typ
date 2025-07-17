@@ -85,8 +85,8 @@
   abstract: abstract(), // Setze es auf none, wenn es nicht angezeigt werden soll
 
   // Outlines
-  depth-toc: 4,
   outlines-indent: 1em,
+  depth-toc: 4,                     // Wenn `thesis-compliant` true ist, dann wird es auf 4 gesetzt wenn hier none steht
   show-list-of-figures: false,      // Wird immer angezeigt, wenn `thesis-compliant` true ist
   show-list-of-abbreviations: true, // Achtung: Schlägt fehl wenn glossary leer ist und trotzdem dargestellt werden soll!
   list-of-abbreviations: abbreviations(),
