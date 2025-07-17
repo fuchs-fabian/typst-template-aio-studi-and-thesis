@@ -1,5 +1,8 @@
-#import "@preview/glossarium:0.5.8": gls, glspl
-#import "@preview/codly:1.3.0": *
+#import "packages.typ": package
+
+#import package("citegeist"): load-bibliography
+#import package("codly"): *
+#import package("glossarium"): gls, glspl
 
 #import "utils.typ": *
 
@@ -109,8 +112,8 @@
   
   body
 ) = {
-  import "@preview/hydra:0.6.1": hydra
-  import "@preview/glossarium:0.5.8": make-glossary, register-glossary, print-glossary, gls, glspl
+  import package("hydra"): hydra
+  import package("glossarium"): make-glossary, register-glossary, print-glossary, gls, glspl
   
   import "dictionary.typ": *
   import "cover_sheet.typ": *
