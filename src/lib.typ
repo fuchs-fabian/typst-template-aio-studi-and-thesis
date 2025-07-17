@@ -109,8 +109,8 @@
   
   body
 ) = {
-  import "@preview/hydra:0.6.0": hydra
-  import "@preview/glossarium:0.5.4": make-glossary, register-glossary, print-glossary, gls, glspl
+  import "@preview/hydra:0.6.1": hydra
+  import "@preview/glossarium:0.5.8": make-glossary, register-glossary, print-glossary, gls, glspl
   
   import "dictionary.typ": *
   import "cover_sheet.typ": *
