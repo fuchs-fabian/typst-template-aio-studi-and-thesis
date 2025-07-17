@@ -2,7 +2,6 @@
 
 #import "abstract.typ": abstract
 #import "abbreviations.typ": abbreviations
-#import "literature_and_bibliography.typ": literature-and-bibliography
 #import "attachements.typ": attachements
 
 // Kapitel
@@ -99,7 +98,7 @@
   ),
   show-list-of-tables: true,   // Setze es auf false, wenn es nicht angezeigt werden soll
   show-list-of-todos: true,    // Setze es auf false, wenn es nicht angezeigt werden soll
-  literature-and-bibliography: literature-and-bibliography(),
+  literature-and-bibliography: bibliography(bib-file, title: none, style: "ieee", full: false),
   list-of-attachements: attachements()
 )
 
@@ -120,6 +119,12 @@
 
 // Referenz zu einer anderen Überschrift
 @einleitung
+
+// Zitieren aus der Bibliographie
+Siehe @noauthor_bibliography_nodate
+
+// Verwendung von Inhalten aus der Bibliographie
+#bib.noauthor_citegeist_nodate.fields.title
 
 // TODO anlegen
 #todo[Das ist ein Beispiel]

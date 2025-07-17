@@ -113,7 +113,7 @@
   ),
   show-list-of-tables: true,
   show-list-of-todos: true,
-  literature-and-bibliography: [ // Muss selbst implementiert werden, um den gewünschten Anforderungen zu entsprechen
+  literature-and-bibliography: [ // Im Template ist ein Beispiel enthalten
     Hier ist meine Literatur...
   ],
   list-of-attachements: (
