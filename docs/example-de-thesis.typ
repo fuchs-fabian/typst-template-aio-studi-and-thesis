@@ -192,7 +192,7 @@ Die Überschriften der Verzeichnisse (z. B. Abbildungsverzeichnis) werden nicht 
 
 Bitte informieren Sie sich darüber hinaus, ob in Ihrem Fach Abbildungen und Tabellen bei der Berechnung der vorgegebenen Seitananzahl berücksichtigt werden. Dies macht es erforderlich, dass ein Fork von dem #gls("repo-vorlage", long: true) erstellt werden muss. Dies ist aktuell nicht anpassbar.
 
-= Formattierung
+= Formatierung
 
 Dieses Kapitel thematisiert die Formatierung und Gestaltung der Vorlage für wissenschaftliche Arbeiten.
 
