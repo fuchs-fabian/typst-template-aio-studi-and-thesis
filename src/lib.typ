@@ -1,4 +1,4 @@
-#import "@preview/glossarium:0.5.4": gls, glspl
+#import "@preview/glossarium:0.5.8": gls, glspl
 #import "@preview/codly:1.3.0": *
 
 #import "utils.typ": *
