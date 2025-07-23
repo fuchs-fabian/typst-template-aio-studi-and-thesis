@@ -10,15 +10,4 @@
     ],
     group: "",
   ),
-  (
-    key: "",
-    short: "",
-    plural: "",
-    long: "",
-    longplural: "",
-    description: [
-        
-    ],
-    group: "",
-  ),
 )
