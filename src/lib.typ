@@ -183,9 +183,20 @@
   pagebreak()
 
   // Content basics
-  show heading.where(level: 1): set text(fill: primary-color)
-  show heading.where(level: 1): it => if thesis-compliant { colbreak(weak: true) } + it + v(h1-spacing)
-  
+  show heading.where(level: 1): it => {
+    let is-num = it.numbering != none
+
+    let br = if not thesis-compliant {
+      none
+    } else if is-num {
+      pagebreak(weak: true)
+    } else {
+      colbreak(weak: true)
+    }
+
+    br + it + v(h1-spacing)
+  }
+    
   set page(
     numbering: "1",
     header: context {
