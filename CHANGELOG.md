@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [0.1.3] - 2025-11-16
+
+### Fixed
+
+- Fixed wrong page number in toc for top level headings, thanks [@tresonic] (#14)
+
 ## [0.1.2] - 2025-07-17
 
 ### Added
@@ -49,7 +55,8 @@ to the corresponding tag on GitHub, or the diff
 in comparison to the previous release
 -->
 
-[Unreleased]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.3
 [0.1.2]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.2
 [0.1.1]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.1
 [0.1.0]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.0
@@ -60,6 +67,7 @@ Below are the GitHub profile links of contributors
 
 [@SillyFreak]: https://github.com/SillyFreak
 [@fritz-m-h]: https://github.com/fritz-m-h
+[@tresonic]: https://github.com/tresonic
 
 <!--
 Below are used Typst package links
