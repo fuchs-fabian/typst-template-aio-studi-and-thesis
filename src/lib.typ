@@ -183,6 +183,7 @@
   pagebreak()
 
   // Content basics
+  show heading.where(level: 1): set text(fill: primary-color)
   show heading.where(level: 1): it => {
     let is-num = it.numbering != none
 
