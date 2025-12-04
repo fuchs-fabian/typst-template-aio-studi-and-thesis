@@ -276,7 +276,7 @@
     page(
       numbering: "I"
     )[
-      #heading(depth: 1)[ #txt-abstract ]
+      #heading(depth: 1, bookmarked: to-string(txt-abstract))[ #txt-abstract ]
       #abstract
     ]
   }
@@ -304,7 +304,7 @@
     page(
       numbering: "I"
     )[
-      #heading(depth: 1)[ #txt-list-of-figures ]
+      #heading(depth: 1, bookmarked: to-string(txt-list-of-figures))[ #txt-list-of-figures ]
 
       #simple-outline(
         indent: outlines-indent,
@@ -320,7 +320,7 @@
       page(
         numbering: "I"
       )[
-        #heading(depth: 1)[ #txt-list-of-abbreviations ]
+        #heading(depth: 1, bookmarked: to-string(txt-list-of-abbreviations))[ #txt-list-of-abbreviations ]
         #register-glossary(list-of-abbreviations)
         #print-glossary(list-of-abbreviations)
       ]
@@ -356,7 +356,7 @@
           numbering: "I"
         )[
           #if is-not-none-or-empty(o.title) {
-            heading(depth: 1)[ #o.title ]
+            heading(depth: 1, bookmarked: to-string(o.title))[ #o.title ]
           }
           #o.custom
         ]
@@ -434,14 +434,14 @@
 
   if is-not-none-or-empty(literature-and-bibliography) {
     page[
-      #heading(depth: 1)[ #txt-literature-and-bibliography ]
+      #heading(depth: 1, bookmarked: to-string(txt-literature-and-bibliography))[ #txt-literature-and-bibliography ]
       #literature-and-bibliography
     ]
   }
 
   if is-not-none-or-empty(list-of-attachements) and (thesis-compliant or list-of-attachements.at(0).a != none) {
     page[
-      #heading(depth: 1)[ #txt-list-of-attachements ]
+      #heading(depth: 1, bookmarked: to-string(txt-list-of-attachements))[ #txt-list-of-attachements ]
 
       #v(1.5em)
       
