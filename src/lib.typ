@@ -243,9 +243,8 @@
   
   show figure.caption.where(kind: image): it => get-figure-caption(it)
   show figure.caption.where(kind: table): it => get-figure-caption(it)
-  show figure.caption.where(kind: math.equation): it => get-figure-caption(it)
-  
-  show figure.where(kind: math.equation): set figure(supplement: txt-supplement-formula, numbering: "1")
+  show figure.caption.where(kind: "formula"): it => get-figure-caption(it)
+  show figure.where(kind: "formula"): set figure(supplement: txt-supplement-formula, numbering: "1")
 
   show link: set text(fill: secondary-color.darken(60%))
 
@@ -326,8 +325,6 @@
   }
   
   // List of Formulas
-  set math.equation(numbering: if thesis-compliant or show-list-of-formulas { "(1)" } else { none }, supplement: txt-supplement-formula)
-
   show math.equation.where(block: true) : it => rect(width: 100%, fill: background-color)[
     #v(0.5em)
     #it
@@ -339,7 +336,7 @@
       #simple-outline(
         title: get-heading-str("list-of-formulas"),
         indent: outlines-indent,
-        target: math.equation.where(block: true)
+        target: figure.where(kind: "formula")
       )
     ]
   }
