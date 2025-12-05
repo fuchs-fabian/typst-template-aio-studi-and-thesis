@@ -33,18 +33,9 @@ location = "Location"
 date = "Date"
 author-signature = "Author's Signature"
 
-# Headings
-abstract = "Abstract"
-list-of-figures = "List of Figures"
-list-of-abbreviations = "List of Abbreviations"
-list-of-formulas = "List of Formulas"
-supplement-formula = "Equation"
-list-of-tables = "List of Tables"
-literature-and-bibliography = "Literature and Bibliography"
-list-of-attachements = "List of Attachements"
-
 # Other
 attachement = "Attachement"
+supplement-formula = "Equation"
 
 # Assets
 author = "Author"
@@ -69,6 +60,15 @@ retro-measures = "Measures"
 
 user-story-title = "Title"
 user-story-acceptance-criteria = "Acceptance Criteria"
+
+# Headings
+abstract = "Abstract"
+list-of-figures = "List of Figures"
+list-of-abbreviations = "List of Abbreviations"
+list-of-formulas = "List of Formulas"
+list-of-tables = "List of Tables"
+literature-and-bibliography = "Literature and Bibliography"
+list-of-attachements = "List of Attachements"
 
 
 [lang.de]
@@ -102,18 +102,9 @@ location = "Ort"
 date = "Datum"
 author-signature = "Unterschrift des Verfassers / der Verfasserin"
 
-# Headings
-abstract = "Abstract"
-list-of-figures = "Abbildungsverzeichnis"
-list-of-abbreviations = "Abkürzungsverzeichnis"
-list-of-formulas = "Formelverzeichnis"
-supplement-formula = "Formel"
-list-of-tables = "Tabellenverzeichnis"
-literature-and-bibliography = "Literatur- und Quellenverzeichnis"
-list-of-attachements = "Anlagenverzeichnis"
-
 # Other
 attachement = "Anlage"
+supplement-formula = "Formel"
 
 # Assets
 author = "Autor/in"
@@ -138,3 +129,12 @@ retro-measures = "Maßnahmen"
 
 user-story-title = "Titel"
 user-story-acceptance-criteria = "Akzeptanzkriterien"
+
+# Headings
+abstract = "Abstract"
+list-of-figures = "Abbildungsverzeichnis"
+list-of-abbreviations = "Abkürzungsverzeichnis"
+list-of-formulas = "Formelverzeichnis"
+list-of-tables = "Tabellenverzeichnis"
+literature-and-bibliography = "Literatur- und Quellenverzeichnis"
+list-of-attachements = "Anlagenverzeichnis"

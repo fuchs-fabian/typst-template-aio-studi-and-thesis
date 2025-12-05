@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed issue where translated headings appeared empty in the PDF viewer's table of contents (#17)
+
 ## [0.1.3] - 2025-11-16
 
 ### Fixed
@@ -13,20 +17,24 @@
 ## [0.1.2] - 2025-07-17
 
 ### Added
+
 - Added ability to hide table of contents (toc) (#5) - Set `depth-toc` to `none`
 - Added logic for bibliography usage to the template (#8)
 - Added additional styling in template (#9)
 - Added centralized package management for imports
 
 ### Changed
+
 - Updated [glossarium] to version 0.5.8
 - Updated [hydra] to version 0.6.1 
 - Replaced `"Roboto"` font with `default-font` (#7)
 
 ### Removed
+
 - Removed unnecessary paragraph settings from `card` and `author-box` definitions (#6)
 
 ### Fixed
+
 - Fixed typo in example thesis (DE)
 
 ## [0.1.1] - 2025-03-30

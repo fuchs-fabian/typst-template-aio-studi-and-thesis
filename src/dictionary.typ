@@ -2,7 +2,8 @@
 
 #import package("linguify"): set-database as initialize-dictionary, linguify
 
-#let use-dictionary() = initialize-dictionary(toml("lang.toml"))
+#let lang-data = toml("lang.toml")
+#let use-dictionary() = initialize-dictionary(lang-data)
 
 // Cover sheet
 #let txt-cooperation = linguify("co-operation")
@@ -22,18 +23,9 @@
 #let txt-date = linguify("date")
 #let txt-author-signature = linguify("author-signature")
 
-// Headings
-#let txt-abstract = linguify("abstract")
-#let txt-list-of-figures = linguify("list-of-figures")
-#let txt-list-of-abbreviations = linguify("list-of-abbreviations")
-#let txt-list-of-formulas = linguify("list-of-formulas")
-#let txt-supplement-formula = linguify("supplement-formula")
-#let txt-list-of-tables = linguify("list-of-tables")
-#let txt-literature-and-bibliography = linguify("literature-and-bibliography")
-#let txt-list-of-attachements = linguify("list-of-attachements")
-
 // Other
 #let txt-attachement = linguify("attachement")
+#let txt-supplement-formula = linguify("supplement-formula")
 
 // Assets
 #let txt-author = linguify("author")
@@ -58,3 +50,26 @@
 
 #let txt-user-story-title = linguify("user-story-title")
 #let txt-user-story-acceptance-criteria = linguify("user-story-acceptance-criteria")
+
+// Helper to retrieve raw strings for PDF bookmarks (linguify returns content, which breaks bookmarks)
+#let get-lang-str(
+  lang: "en",
+  key
+) = {
+  let lang-map = lang-data.at("lang")
+  let val = lang-map.at(lang, default: none)
+  if val == none {
+    val = lang-map.at(lang-data.conf.default-lang)
+  }
+  val.at(key)
+}
+/*
+Used keys for headings:
+- abstract
+- list-of-figures
+- list-of-abbreviations
+- list-of-formulas
+- list-of-tables
+- literature-and-bibliography
+- list-of-attachements
+*/
