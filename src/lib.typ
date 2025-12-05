@@ -231,7 +231,7 @@
     hyphenate: hyphenate
   )
 
-  let get-figure-caption(it) = [
+  let get-caption(it) = [
     #set align(left)
     #h(1em)
     #box[
@@ -241,8 +241,9 @@
     ]
   ]
   
-  show figure.caption.where(kind: image): it => get-figure-caption(it)
-  show figure.caption.where(kind: table): it => get-figure-caption(it)
+  show figure.caption.where(kind: image): it => get-caption(it)
+  show figure.caption.where(kind: table): it => get-caption(it)
+  show figure.caption.where(kind: math.equation): it => get-caption(it)
 
   show link: set text(fill: secondary-color.darken(60%))
 
