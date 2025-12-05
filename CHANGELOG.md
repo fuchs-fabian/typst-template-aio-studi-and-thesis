@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.1.4] - 2025-12-05
+
 ### Fixed
 
 - Fixed issue where translated headings appeared empty in the PDF viewer's table of contents (#17)
