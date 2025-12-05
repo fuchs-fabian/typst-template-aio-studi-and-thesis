@@ -243,8 +243,8 @@
   
   show figure.caption.where(kind: image): it => get-figure-caption(it)
   show figure.caption.where(kind: table): it => get-figure-caption(it)
-  show figure.caption.where(kind: "formula"): it => get-figure-caption(it)
-  show figure.where(kind: "formula"): set figure(supplement: txt-supplement-formula, numbering: "1")
+  show figure.caption.where(kind: custom-figure-kind.formula): it => get-figure-caption(it)
+  show figure.where(kind: custom-figure-kind.formula): set figure(supplement: txt-supplement-formula, numbering: "1")
 
   show link: set text(fill: secondary-color.darken(60%))
 
@@ -336,7 +336,7 @@
       #simple-outline(
         title: get-heading-str("list-of-formulas"),
         indent: outlines-indent,
-        target: figure.where(kind: "formula")
+        target: figure.where(kind: custom-figure-kind.formula)
       )
     ]
   }

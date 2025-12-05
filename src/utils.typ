@@ -27,6 +27,11 @@
   "Carlito",  // Linux
 )
 
+// Custom figure kinds
+#let custom-figure-kind = (
+  formula: "formula"
+)
+
 // Colors
 #let blue = rgb("#009fe3")
 #let dark-blue = rgb("#152f4e")

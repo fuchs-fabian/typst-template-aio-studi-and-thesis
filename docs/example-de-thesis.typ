@@ -295,23 +295,18 @@ list-of-abbreviations: (
 
 == Formeln
 
-Um Formeln im Formelverzeichnis aufzunehmen genügt es folgendes zu schreiben:
+Um Formeln im Formelverzeichnis aufzunehmen muss folgender Syntax verwendet werden:
 
 ```Typst
-$ a^2 + b^2 = c^2 $
-```
-
-$ a^2 + b^2 = c^2 $
-
-Sofern diese einen Untertitel (`caption`) besitzen sollen, können Sie dies folgendermaßen tun:
-
-```Typst
-#figure(caption: "Pythagoras")[
+#figure(
+  kind: custom-figure-kind.formula,
+  caption: "Pythagoras",
   $ a^2 + b^2 = c^2 $
-]
+)
 ```
 
 #figure(
+  kind: custom-figure-kind.formula,
   caption: "Pythagoras",
   $ a^2 + b^2 = c^2 $
 )
