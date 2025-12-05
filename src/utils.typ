@@ -38,7 +38,7 @@
 // Outline, which has a title listed in toc and no special formatting
 #let simple-outline(title: none, target: none, indent: 1em, depth: none) = {
   if is-not-none-or-empty(title) {
-    heading(depth: 1, bookmarked: to-string(title))[ #title ]
+    heading(depth: 1, bookmarked: true)[ #title ]
   }
   outline(
     title: none,
