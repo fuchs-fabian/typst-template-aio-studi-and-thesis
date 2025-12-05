@@ -303,6 +303,19 @@ $ a^2 + b^2 = c^2 $
 
 $ a^2 + b^2 = c^2 $
 
+Sofern diese einen Untertitel (`caption`) besitzen sollen, können Sie dies folgendermaßen tun:
+
+```Typst
+#figure(caption: "Pythagoras")[
+  $ a^2 + b^2 = c^2 $
+]
+```
+
+#figure(
+  caption: "Pythagoras",
+  $ a^2 + b^2 = c^2 $
+)
+
 == Formatvorlagen
 
 Es gibt nur diese eine Vorlage wenn sie #gls("repo-vorlage") nutzen. Verwende sie und Sie werden viel Zeit sparen. Die Zeit, sich Gedanken machen zu müssen, wie etwas formatiert oder eingestellt werden muss, ist vorbei. Falls Sie dennoch Anpassungen vornehmen möchten, ist dies großteils an einer Stelle möglich.
