@@ -7,6 +7,7 @@
 ### Fixed
 
 - Fixed issue where translated headings appeared empty in the PDF viewer's table of contents (#17)
+- Fixed formula usage (requires kind: `custom-figure-kind.formula`) (#16)
 
 ## [0.1.3] - 2025-11-16
 
