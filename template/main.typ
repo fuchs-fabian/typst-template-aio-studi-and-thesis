@@ -129,9 +129,6 @@ Siehe @noauthor_bibliography_nodate
 // TODO anlegen
 #todo[Das ist ein Beispiel]
 
-// Formel mit Beschriftung (erscheint im Formelverzeichnis)
-#equation(block: true, $f(x) = x^2$)
-
 = Schluss/Zusammenfassung/Fazit<zusammenfassung>
 
 #summary()

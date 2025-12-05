@@ -298,12 +298,10 @@ list-of-abbreviations: (
 Um Formeln im Formelverzeichnis aufzunehmen genügt es folgendes zu schreiben:
 
 ```Typst
-#equation(block: true, $ a^2 + b^2 = c^2 $)
+$ a^2 + b^2 = c^2 $
 ```
 
-#equation(block: true, $ a^2 + b^2 = c^2 $)
-
-Der Parameter `block: true` ist entscheidend, damit die Formel im Formelverzeichnis erscheint.
+$ a^2 + b^2 = c^2 $
 
 == Formatvorlagen
 
