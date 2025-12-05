@@ -35,6 +35,11 @@
 #let green = rgb("#26a269")
 #let purple = rgb("#613583")
 
+// Roman numbered page
+#let roman-page(body) = {
+  page(numbering: "I")[ #body ]
+}
+
 // Outline, which has a title listed in toc and no special formatting
 #let simple-outline(title: none, target: none, indent: 1em, depth: none) = {
   if is-not-none-or-empty(title) {

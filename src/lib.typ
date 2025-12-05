@@ -183,6 +183,7 @@
   pagebreak()
 
   // Content basics
+  let get-heading-str(key) = get-lang-str(lang: lang, key)
   show heading.where(level: 1): set text(fill: primary-color)
   show heading.where(level: 1): it => {
     let is-num = it.numbering != none
@@ -273,10 +274,8 @@
 
   // Abstract
   if is-not-none-or-empty(abstract) {
-    page(
-      numbering: "I"
-    )[
-      #heading(depth: 1, bookmarked: true)[ #txt-abstract ]
+    roman-page[
+      #heading(depth: 1, bookmarked: true)[ #get-heading-str("abstract") ]
       #abstract
     ]
   }
@@ -301,10 +300,8 @@
 
   // List of Figures
   if thesis-compliant or show-list-of-figures {
-    page(
-      numbering: "I"
-    )[
-      #heading(depth: 1, bookmarked: true)[ #txt-list-of-figures ]
+    roman-page[
+      #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-figures") ]
 
       #simple-outline(
         indent: outlines-indent,
@@ -317,10 +314,8 @@
   if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
     show: make-glossary
     if is-not-none-or-empty(list-of-abbreviations.at(0).key) and is-not-none-or-empty(list-of-abbreviations.at(0).short) {
-      page(
-        numbering: "I"
-      )[
-        #heading(depth: 1, bookmarked: true)[ #txt-list-of-abbreviations ]
+      roman-page[
+        #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
         #register-glossary(list-of-abbreviations)
         #print-glossary(list-of-abbreviations)
       ]
@@ -337,11 +332,9 @@
   ]
   
   if show-list-of-formulas {  
-    page(
-      numbering: "I"
-    )[
+    roman-page[
       #simple-outline(
-        title: txt-list-of-formulas,
+        title: get-heading-str("list-of-formulas"),
         indent: outlines-indent,
         target: math.equation.where(block: true)
       )
@@ -352,11 +345,9 @@
   if is-not-none-or-empty(custom-outlines) {
     for o in custom-outlines {
       if o.title != none and o.custom != none {
-        page(
-          numbering: "I"
-        )[
+        roman-page[
           #if is-not-none-or-empty(o.title) {
-            heading(depth: 1, bookmarked: to-string(o.title))[ #o.title ]
+            heading(depth: 1, bookmarked: true)[ #o.title ]
           }
           #o.custom
         ]
@@ -370,7 +361,7 @@
       numbering: "I"
     )[
       #simple-outline(
-        title: txt-list-of-tables,
+        title: get-heading-str("list-of-tables"),
         indent: outlines-indent,
         target: figure.where(kind: table)
       )
@@ -434,14 +425,14 @@
 
   if is-not-none-or-empty(literature-and-bibliography) {
     page[
-      #heading(depth: 1, bookmarked: true)[ #txt-literature-and-bibliography ]
+      #heading(depth: 1, bookmarked: true)[ #get-heading-str("literature-and-bibliography") ]
       #literature-and-bibliography
     ]
   }
 
   if is-not-none-or-empty(list-of-attachements) and (thesis-compliant or list-of-attachements.at(0).a != none) {
     page[
-      #heading(depth: 1, bookmarked: true)[ #txt-list-of-attachements ]
+      #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-attachements") ]
 
       #v(1.5em)
       
