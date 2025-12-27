@@ -410,7 +410,7 @@
     heading(depth: 1)[ TODOs ]
   
     for body in elems {
-      text([+ #link(body.location(), body.text)], red)
+      text([+ #link(body.location(), body)], red)
     }
   }
 
