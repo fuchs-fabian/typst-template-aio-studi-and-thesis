@@ -79,7 +79,7 @@
 
   // Abstract
   abstract: none,
-
+  abstract-function: none,
   // Outlines
   outlines-indent: 1em,
   depth-toc: 4,   // none to disable
@@ -144,6 +144,12 @@
   use-dictionary()
   
   show: codly-init.with()
+
+
+  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+    show: make-glossary
+    register-glossary(list-of-abbreviations)
+  }
 
   if is-not-none-or-empty(date) == false {
     date = datetime.today().display(date-format)
@@ -275,10 +281,15 @@
   counter(page).update(1)
 
   // Abstract
-  if is-not-none-or-empty(abstract) {
+  if is-not-none-or-empty(abstract) or is-not-none-or-empty(abstract-function) {
     roman-page[
       #heading(depth: 1, bookmarked: true)[ #get-heading-str("abstract") ]
-      #abstract
+
+      #if is-not-none-or-empty(abstract) {
+        abstract
+      } else {
+        abstract-function()
+      }
     ]
   }
 
@@ -314,11 +325,11 @@
 
   // List of Abbreviations
   if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
-    show: make-glossary
-    if is-not-none-or-empty(list-of-abbreviations.at(0).key) and is-not-none-or-empty(list-of-abbreviations.at(0).short) {
+    if (
+      is-not-none-or-empty(list-of-abbreviations.at(0).key) and is-not-none-or-empty(list-of-abbreviations.at(0).short)
+    ) {
       roman-page[
         #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #register-glossary(list-of-abbreviations)
         #print-glossary(list-of-abbreviations)
       ]
     }
