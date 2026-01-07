@@ -77,6 +77,13 @@
     Eine knappe Zusammenfassung (falls erforderlich) in deutscher und/oder englischer Sprache skizziert auf etwa 1/2 bis 1 Seite die Problemstellung, die verwendete(n) Methode(n) und das wichtigste Ergebnis.
   ],
 
+  // alternative: wrap the abstract in a function and be able to use abbreviations
+  // abstract-function: () => [
+  //   Eine knappe Zusammenfassung (falls erforderlich) in deutscher und/oder englischer Sprache skizziert auf etwa 1/2 bis 1 Seite die Problemstellung, die verwendete(n) Methode(n) und das wichtigste Ergebnis.
+  //
+  //   Jetzt können auch Abkürzungen genutzt werden: #gls("repo-vorlage").
+  // ],
+
   // Outlines
   outlines-indent: 1em,
   depth-toc: 4,

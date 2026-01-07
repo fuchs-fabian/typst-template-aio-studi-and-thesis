@@ -1,6 +1,6 @@
 #import "lib.typ": *
 
-#import "abstract.typ": abstract
+#import "abstract.typ": abstract, abstract-function
 #import "abbreviations.typ": abbreviations
 #import "attachements.typ": attachements
 
@@ -82,6 +82,7 @@
 
   // Abstract
   abstract: abstract(), // Setze es auf none, wenn es nicht angezeigt werden soll
+  // abstract-function: abstract-function, // Verwende Abkürzungen im Abstract
 
   // Outlines
   outlines-indent: 1em,

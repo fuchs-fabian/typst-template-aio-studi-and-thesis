@@ -142,6 +142,7 @@ If certain dictionaries are used, care must be taken to ensure that parameters w
 
   // Abstract
   abstract: none,
+  // abstract-function: none, // alternative for `abstract`: wrap abstract in a function to use abbreviations
 
   // Outlines
   outlines-indent: 1em,

@@ -140,6 +140,7 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
 
   // Abstract
   abstract: none,
+  // abstract-function: none, // alternative for `abstract`: wrap abstract in a function to use abbreviations
 
   // Outlines
   outlines-indent: 1em,
