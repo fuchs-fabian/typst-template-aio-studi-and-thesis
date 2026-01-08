@@ -15,7 +15,7 @@
     (
       name: "Unknown author", // required
       id: "",
-      email: ""
+      email: "",
     ),
   ),
   title: "Unknown title",
@@ -23,41 +23,41 @@
   date: none,
   version: none,
   thesis-compliant: false,
-
   // Format
   side-margins: (
-    left: 3.5cm,  // required
+    left: 3.5cm, // required
     right: 3.5cm, // required
-    top: 3.5cm,   // required
-    bottom: 3.5cm // required
+    top: 3.5cm, // required
+    bottom: 3.5cm, // required
   ),
   h1-spacing: 0.5em,
   line-spacing: 0.65em,
   font: default-font,
   font-size: 11pt,
   hyphenate: false,
-
   // Color settings
   primary-color: dark-blue,
   secondary-color: blue,
   text-color: dark-grey,
   background-color: light-blue,
-
   // Cover sheet
   custom-cover-sheet: none,
-  cover-sheet: (    // none
-    university: (   // none
-      name: none,   // required
+  cover-sheet: (
+    // none
+    university: (
+      // none
+      name: none, // required
       street: none, // required
-      city: none,   // required
-      logo: none
-    ), 
-    employer: (     // none
-      name: none,   // required
+      city: none, // required
+      logo: none,
+    ),
+    employer: (
+      // none
+      name: none, // required
       street: none, // required
-      city: none,   // required
-      logo: none
-    ), 
+      city: none, // required
+      logo: none,
+    ),
     cover-image: none,
     description: none,
     faculty: none,
@@ -65,30 +65,29 @@
     semester: none,
     course: none,
     examiner: none,
-    submission-date: none
+    submission-date: none,
   ),
-
   // Declaration
   custom-declaration: none,
-  declaration-on-the-final-thesis: (             // none
-    legal-reference: none,                       // required
-    thesis-name: none,                           // required
+  declaration-on-the-final-thesis: (
+    // none
+    legal-reference: none, // required
+    thesis-name: none, // required
     consent-to-publication-in-the-library: none, // required | true, false
-    genitive-of-university: none                 // required
+    genitive-of-university: none, // required
   ),
-
   // Abstract
   abstract: none,
   abstract-function: none,
   // Outlines
   outlines-indent: 1em,
-  depth-toc: 4,   // none to disable
+  depth-toc: 4, // none to disable
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
     (
-      key: "",    // required
-      short: "",  // required
+      key: "", // required
+      short: "", // required
       plural: "",
       long: "",
       longplural: "",
@@ -97,24 +96,25 @@
     ),
   ),
   show-list-of-formulas: false,
-  custom-outlines: ( // none
+  custom-outlines: (
+    // none
     (
-      title: none,   // required
-      custom: none   // required
+      title: none, // required
+      custom: none, // required
     ),
   ),
   show-list-of-tables: false,
   show-list-of-todos: false,
   literature-and-bibliography: none,
-  list-of-attachements: ( // none
-    (a: none),            // required
+  list-of-attachements: (
+    // none
+    (a: none), // required
   ),
-  
-  body
+  body,
 ) = {
   import package("hydra"): hydra
-  import package("glossarium"): make-glossary, register-glossary, print-glossary, gls, glspl
-  
+  import package("glossarium"): gls, glspl, make-glossary, print-glossary, register-glossary
+
   import "dictionary.typ": *
   import "cover_sheet.typ": *
   import "declaration_on_the_final_thesis.typ": *
@@ -124,25 +124,25 @@
 
   set document(
     title: title + if is-not-none-or-empty(version) { " v" + version },
-    author: authors.map(a => a.name)
+    author: authors.map(a => a.name),
   )
-  
+
   // Basics
   set page(
     paper: "a4",
     flipped: false,
-    margin: side-margins
+    margin: side-margins,
   )
 
   set text(
     lang: lang,
     font: font,
     size: font-size,
-    fill: text-color
+    fill: text-color,
   )
 
   use-dictionary()
-  
+
   show: codly-init.with()
 
 
@@ -154,13 +154,13 @@
   if is-not-none-or-empty(date) == false {
     date = datetime.today().display(date-format)
   }
-  
+
   // Cover Sheet
   if is-not-none-or-empty(custom-cover-sheet) == false and is-not-none-or-empty(cover-sheet) {
     let cover-sheet-dict-contains-key(key) = {
       return dict-contains-key(dict: cover-sheet, key)
     }
-    
+
     get-cover-sheet(
       primary-color: primary-color,
       secondary-color: secondary-color,
@@ -181,7 +181,7 @@
       semester: if cover-sheet-dict-contains-key("semester") { cover-sheet.semester },
       course: if cover-sheet-dict-contains-key("course") { cover-sheet.course },
       examiner: if cover-sheet-dict-contains-key("examiner") { cover-sheet.examiner },
-      submission-date: if cover-sheet-dict-contains-key("submission-date") { cover-sheet.submission-date }
+      submission-date: if cover-sheet-dict-contains-key("submission-date") { cover-sheet.submission-date },
     )
   } else {
     custom-cover-sheet
@@ -204,7 +204,7 @@
 
     br + it + v(h1-spacing)
   }
-    
+
   set page(
     numbering: "1",
     header: context {
@@ -220,37 +220,50 @@
             } else {
               h1
             }
-          ]
+          ],
         )
         v(-1em)
         line(length: 100%, stroke: 1.2pt + text-color)
       }
-    }
+    },
   )
 
   set par(
     leading: line-spacing,
-    justify: true
+    spacing: line-spacing + 0.55em,
+    justify: true,
   )
-  
+
   set text(
-    hyphenate: hyphenate
+    hyphenate: hyphenate,
   )
 
   let get-figure-caption(it) = [
     #set align(left)
     #h(1em)
     #box[
-      #it.supplement
-      #context it.counter.display(it.numbering):
-      #text(fill: primary-color)[*#it.body*]
+      *#it.supplement
+      #context it.counter.display(it.numbering)*
+      #text(fill: primary-color)[#it.body]
     ]
   ]
-  
+
   show figure.caption.where(kind: image): it => get-figure-caption(it)
   show figure.caption.where(kind: table): it => get-figure-caption(it)
   show figure.caption.where(kind: custom-figure-kind.formula): it => get-figure-caption(it)
   show figure.where(kind: custom-figure-kind.formula): set figure(supplement: txt-supplement-formula, numbering: "1")
+
+  set figure(numbering: n => {
+    let hdr = counter(heading).get().first()
+    let num = query(selector(heading).before(here())).last().numbering
+    numbering(num, hdr, n)
+  })
+
+  show heading.where(level: 1): hdr => {
+    counter(figure.where(kind: image)).update(0)
+    counter(figure.where(kind: table)).update(0)
+    hdr
+  }
 
   show link: set text(fill: secondary-color.darken(60%))
 
@@ -258,22 +271,21 @@
   if is-not-none-or-empty(custom-declaration) {
     page(
       header: "",
-      footer: ""
+      footer: "",
     )[
       #custom-declaration
     ]
-  }
-  else if thesis-compliant and is-not-none-or-empty(declaration-on-the-final-thesis) {
+  } else if thesis-compliant and is-not-none-or-empty(declaration-on-the-final-thesis) {
     page(
       header: "",
-      footer: ""
+      footer: "",
     )[
       #get-declaration-on-the-final-thesis(
         lang: lang,
         legal-reference: declaration-on-the-final-thesis.legal-reference,
         thesis-name: declaration-on-the-final-thesis.thesis-name,
         consent-to-publication-in-the-library: declaration-on-the-final-thesis.consent-to-publication-in-the-library,
-        genitive-of-university: declaration-on-the-final-thesis.genitive-of-university
+        genitive-of-university: declaration-on-the-final-thesis.genitive-of-university,
       )
     ]
   }
@@ -296,7 +308,7 @@
   // Table of contents (TOC)
   if thesis-compliant or is-not-none-or-empty(depth-toc) {
     page(
-      numbering: none
+      numbering: none,
     )[
       #show outline.entry.where(level: 1): it => {
         v(1.5em, weak: true)
@@ -318,7 +330,7 @@
 
       #simple-outline(
         indent: outlines-indent,
-        target: figure.where(kind: image)
+        target: figure.where(kind: image),
       )
     ]
   }
@@ -334,20 +346,20 @@
       ]
     }
   }
-  
+
   // List of Formulas
-  show math.equation.where(block: true) : it => rect(width: 100%, fill: background-color)[
+  show math.equation.where(block: true): it => rect(width: 100%, fill: background-color)[
     #v(0.5em)
     #it
     #v(0.5em)
   ]
-  
-  if show-list-of-formulas {  
+
+  if show-list-of-formulas {
     roman-page[
       #simple-outline(
         title: get-heading-str("list-of-formulas"),
         indent: outlines-indent,
-        target: figure.where(kind: custom-figure-kind.formula)
+        target: figure.where(kind: custom-figure-kind.formula),
       )
     ]
   }
@@ -369,12 +381,12 @@
   // List of Tables
   if show-list-of-tables {
     page(
-      numbering: "I"
+      numbering: "I",
     )[
       #simple-outline(
         title: get-heading-str("list-of-tables"),
         indent: outlines-indent,
-        target: figure.where(kind: table)
+        target: figure.where(kind: table),
       )
     ]
   }
@@ -384,7 +396,7 @@
     footer: if thesis-compliant == false [
       #set text(weight: "regular")
       #let size = 11pt
-      
+
       #context {
         grid(
           columns: (1fr, auto, 1fr),
@@ -394,23 +406,22 @@
             #text(fill: text-color, size: size)[ #date ]
           ],
           [
-            #text(fill: primary-color, size: size + 1pt)[ *#title* ] \ 
+            #text(fill: primary-color, size: size + 1pt)[ *#title* ] \
             #text(fill: secondary-color, size: size)[ #subtitle ]
           ],
           [
             #text(fill: text-color, size: size)[ #counter(page).display() / #counter(page).final().last() ]
-          ]
+          ],
         )
       }
-    ]
-    else  [
-      #context{
+    ] else [
+      #context {
         set align(center)
         text(fill: text-color)[ #counter(page).display() ]
       }
-    ]
+    ],
   )
-  
+
   counter(page).update(1)
 
   let todos() = context {
@@ -419,16 +430,16 @@
     if elems.len() == 0 { return }
 
     heading(depth: 1)[ TODOs ]
-  
+
     for body in elems {
       text([+ #link(body.location(), body.text)], red)
     }
   }
 
   if show-list-of-todos { todos() }
-  
-  set heading(numbering: "1.1.")
-  
+
+  set heading(numbering: "1.1")
+
   body
 
   // Literature, bibliography, attachements
@@ -446,7 +457,7 @@
       #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-attachements") ]
 
       #v(1.5em)
-      
+
       #let index = 1
       #for c in list-of-attachements {
         text()[ #txt-attachement A#index: #c.a ]
