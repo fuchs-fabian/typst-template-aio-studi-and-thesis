@@ -7,7 +7,6 @@
 #import "utils.typ": *
 
 #import "assets.typ": *
-#import "pm_assets.typ": *
 
 #let project(
   lang: "de",

@@ -4,13 +4,13 @@
   legal-reference: none,
   thesis-name: none,
   consent-to-publication-in-the-library: none, // true, false
-  genitive-of-university: none
+  genitive-of-university: none,
 ) = [
   #import "utils.typ": *
   #import "dictionary.typ": txt-declaration-on-the-final-thesis, txt-declaration-on-the-final-thesis-first-part
 
-  #let get-placeholder(it) = { text(fill: red)[#todo(it)] }
-    
+  #let get-placeholder(it) = { text(fill: red)[#TODO(it)] }
+
   #set text(size: 10pt)
   #set heading(numbering: none)
   #heading(outlined: false, txt-declaration-on-the-final-thesis)
@@ -35,7 +35,7 @@
   ] else if lang == "en" [
     Consent to the electronic plagiarism check is granted.
   ]
-    
+
   #signing()
 
   #v(2fr)
@@ -44,7 +44,9 @@
     Der Veröffentlichung der
     #if is-not-none-or-empty(thesis-name) [ #thesis-name ] else [ #get-placeholder[Art der Abschlussarbeit] ]
     in der Bibliothek der
-    #if is-not-none-or-empty(genitive-of-university) [ #genitive-of-university ] else [ #get-placeholder[Genitiv der Universität] ]
+    #if is-not-none-or-empty(
+      genitive-of-university,
+    ) [ #genitive-of-university ] else [ #get-placeholder[Genitiv der Universität] ]
     wird
     #if is-not-none-or-empty(consent-to-publication-in-the-library) {
       if consent-to-publication-in-the-library [] else [nicht]
@@ -54,13 +56,16 @@
     The publication of the
     #if is-not-none-or-empty(thesis-name) [ #thesis-name ] else [ #get-placeholder[thesis name] ]
     in the library of
-    #if is-not-none-or-empty(genitive-of-university) [ #genitive-of-university ] else [ #get-placeholder[genitive of university] ]
+    #if is-not-none-or-empty(
+      genitive-of-university,
+    ) [ #genitive-of-university ] else [ #get-placeholder[genitive of university] ]
     is
     #if is-not-none-or-empty(consent-to-publication-in-the-library) {
       if consent-to-publication-in-the-library [] else [nicht]
     } else [ #get-placeholder[not] ]
     approved.
-  ] 
+  ]
 
   #signing()
 ]
+
