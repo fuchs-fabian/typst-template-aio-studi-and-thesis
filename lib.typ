@@ -31,8 +31,9 @@
     bottom: 3.5cm, // required
   ),
   h1-spacing: 0.5em,
-  line-spacing: 0.65em,
-  font: default-font,
+  line-spacing: 1.1em,
+  font-heading: "Lexend",
+  font-text: "Vollkorn",
   font-size: 11pt,
   hyphenate: false,
   // Color settings
@@ -136,10 +137,12 @@
 
   set text(
     lang: lang,
-    font: font,
+    font: font-text,
     size: font-size,
     fill: text-color,
   )
+
+  show heading: it => text(font: font-heading, it.body)
 
   use-dictionary()
 
