@@ -39,7 +39,7 @@
   abstract-function: none,
   list-of-abbreviations: none,
   literature-and-bibliography: none,
-  list-of-attachements: none,
+  attachements: none,
   font-heading: "Lexend",
   font-text: "Vollkorn",
   primary-color: dark-blue,
@@ -121,6 +121,6 @@
     show-list-of-tables: true, // Setze es auf false, wenn es nicht angezeigt werden soll
     show-list-of-todos: true, // Setze es auf false, wenn es nicht angezeigt werden soll
     literature-and-bibliography: literature-and-bibliography,
-    list-of-attachements: list-of-attachements,
+    attachements: attachements,
   )
 }

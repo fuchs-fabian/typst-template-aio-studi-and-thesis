@@ -1,8 +1,6 @@
-#import "packages.typ": package
 
-#import package("citegeist"): load-bibliography
-#import package("codly"): *
-#import package("glossarium"): gls, glspl
+#import "@preview/citegeist:0.2.0": load-bibliography
+#import "@preview/codly:1.3.0": *
 
 #import "utils.typ": *
 
@@ -85,8 +83,7 @@
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
-    (
-      key: "", // required
+    "": (
       short: "", // required
       plural: "",
       long: "",
@@ -106,14 +103,11 @@
   show-list-of-tables: false,
   show-list-of-todos: false,
   literature-and-bibliography: none,
-  list-of-attachements: (
-    // none
-    (a: none), // required
-  ),
+  attachements: none,
   body,
 ) = {
-  import package("hydra"): hydra
-  import package("glossarium"): gls, glspl, make-glossary, print-glossary, register-glossary
+  import "@preview/hydra:0.6.2": hydra
+  import "@preview/glossy:0.9.0": *
 
   import "dictionary.typ": *
   import "cover_sheet.typ": *
@@ -132,6 +126,44 @@
     paper: "a4",
     flipped: false,
     margin: side-margins,
+    header: context {
+      let odd = calc.odd(here().page())
+
+      align(
+        if odd {right} else {left},
+        text(size: 8.5pt,
+        hydra(if not odd {1} else {2}))
+      )
+    },
+    footer: context {
+      let cnt = counter(page).display()
+
+      let odd = calc.odd(counter(page).get().first())
+
+      if odd {
+        h(1fr)
+      }
+
+      text(fill: text-color, 
+        move(
+          dx: -1%,
+          box(
+            height: 1.5em,
+            inset: (top: 0.2em, left: if odd {0.25em} else {0em}, right: if not odd {0.25em} else {0em}),
+            stroke: (left: if odd {1.5pt + black}, right: if not odd {1.5pt + black}),
+            [
+              #cnt#v(1fr)
+            ]
+          )
+        )
+      )
+
+      // TODO: shift outside of text
+
+      if not odd {
+        h(1fr)
+      }
+    }
   )
 
   set text(
@@ -141,16 +173,20 @@
     fill: text-color,
   )
 
-  show heading: it => text(font: font-heading, it.body)
+  show heading: it => text(font: font-heading, it)
 
   use-dictionary()
 
   show: codly-init.with()
 
+  show: body => {
+    if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+      show: init-glossary.with(list-of-abbreviations)
 
-  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
-    show: make-glossary
-    register-glossary(list-of-abbreviations)
+      body
+    } else {
+      body
+    }
   }
 
   if is-not-none-or-empty(date) == false {
@@ -209,25 +245,25 @@
 
   set page(
     numbering: "1",
-    header: context {
-      if thesis-compliant {
-        align(
-          left,
-          text(weight: "bold", size: 8.5pt)[
-            #let h1 = hydra(1, skip-starting: false)
-
-            #let numbered-heading = to-string(h1).split(regex("[.]\s")).at(1, default: none)
-            #if numbered-heading != none {
-              numbered-heading
-            } else {
-              h1
-            }
-          ],
-        )
-        v(-1em)
-        line(length: 100%, stroke: 1.2pt + text-color)
-      }
-    },
+    // header: context { // NOTE: ehemalige Kopfzeile
+    //   if thesis-compliant {
+    //     align(
+    //       left,
+    //       text(weight: "bold", size: 8.5pt)[
+    //         #let h1 = hydra(1, skip-starting: false)
+    //
+    //         #let numbered-heading = to-string(h1).split(regex("[.]\s")).at(1, default: none)
+    //         #if numbered-heading != none {
+    //           numbered-heading
+    //         } else {
+    //           h1
+    //         }
+    //       ],
+    //     )
+    //     v(-1em)
+    //     line(length: 100%, stroke: 1.2pt + text-color)
+    //   }
+    // },
   )
 
   set par(
@@ -325,46 +361,12 @@
     ]
   }
 
-  // List of Figures
-  if thesis-compliant or show-list-of-figures {
-    roman-page[
-      #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-figures") ]
-
-      #simple-outline(
-        indent: outlines-indent,
-        target: figure.where(kind: image),
-      )
-    ]
-  }
-
-  // List of Abbreviations
-  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
-    if (
-      is-not-none-or-empty(list-of-abbreviations.at(0).key) and is-not-none-or-empty(list-of-abbreviations.at(0).short)
-    ) {
-      roman-page[
-        #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #print-glossary(list-of-abbreviations)
-      ]
-    }
-  }
-
   // List of Formulas
   show math.equation.where(block: true): it => rect(width: 100%, fill: background-color)[
     #v(0.5em)
     #it
     #v(0.5em)
   ]
-
-  if show-list-of-formulas {
-    roman-page[
-      #simple-outline(
-        title: get-heading-str("list-of-formulas"),
-        indent: outlines-indent,
-        target: figure.where(kind: custom-figure-kind.formula),
-      )
-    ]
-  }
 
   // Custom outlines
   if is-not-none-or-empty(custom-outlines) {
@@ -380,50 +382,7 @@
     }
   }
 
-  // List of Tables
-  if show-list-of-tables {
-    page(
-      numbering: "I",
-    )[
-      #simple-outline(
-        title: get-heading-str("list-of-tables"),
-        indent: outlines-indent,
-        target: figure.where(kind: table),
-      )
-    ]
-  }
-
   // Body
-  set page(
-    footer: if thesis-compliant == false [
-      #set text(weight: "regular")
-      #let size = 11pt
-
-      #context {
-        grid(
-          columns: (1fr, auto, 1fr),
-          align: (left, center, right),
-          gutter: size,
-          [
-            #text(fill: text-color, size: size)[ #date ]
-          ],
-          [
-            #text(fill: primary-color, size: size + 1pt)[ *#title* ] \
-            #text(fill: secondary-color, size: size)[ #subtitle ]
-          ],
-          [
-            #text(fill: text-color, size: size)[ #counter(page).display() / #counter(page).final().last() ]
-          ],
-        )
-      }
-    ] else [
-      #context {
-        set align(center)
-        text(fill: text-color)[ #counter(page).display() ]
-      }
-    ],
-  )
-
   counter(page).update(1)
 
   let todos() = context {
@@ -444,9 +403,10 @@
 
   body
 
-  // Literature, bibliography, attachements
-  set heading(numbering: none)
+  counter(heading).update(0)
+  set heading(numbering: "A.1.1")
 
+  // Literature, bibliography, attachements
   if is-not-none-or-empty(literature-and-bibliography) {
     page[
       #heading(depth: 1, bookmarked: true)[ #get-heading-str("literature-and-bibliography") ]
@@ -454,18 +414,59 @@
     ]
   }
 
-  if is-not-none-or-empty(list-of-attachements) and (thesis-compliant or list-of-attachements.at(0).a != none) {
+  // List of Tables
+  if show-list-of-tables {
+    page[
+      #simple-outline(
+        title: get-heading-str("list-of-tables"),
+        indent: outlines-indent,
+        target: figure.where(kind: table),
+      )
+    ]
+  }
+
+  // List of Figures
+  if thesis-compliant or show-list-of-figures {
+    page[
+      #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-figures") ]
+
+      #simple-outline(
+        indent: outlines-indent,
+        target: figure.where(kind: image),
+      )
+    ]
+  }
+
+  // List of Formulas
+  if show-list-of-formulas {
+    page[
+      #simple-outline(
+        title: get-heading-str("list-of-formulas"),
+        indent: outlines-indent,
+        target: figure.where(kind: custom-figure-kind.formula),
+      )
+    ]
+  }
+
+  // List of Abbreviations
+  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+    page[
+      #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
+
+      #glossary(
+        sort: true, // Optional: whether or not to sort the glossary
+        ignore-case: false, // Optional: ignore case when sorting terms
+        show-all: false, // Optional; Show all terms even if unreferenced
+      )
+    ]
+  }
+
+  // Attachments
+  if is-not-none-or-empty(attachements) {
     page[
       #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-attachements") ]
 
-      #v(1.5em)
-
-      #let index = 1
-      #for c in list-of-attachements {
-        text()[ #txt-attachement A#index: #c.a ]
-        v(1em)
-        index = index + 1
-      }
+      #attachements
     ]
   }
 }

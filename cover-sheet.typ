@@ -37,8 +37,6 @@
   ]
 
   align(center)[
-    // #set par(leading: 1em, spacing: 0.5em)
-
     #v(25mm)
 
     #block()[
@@ -53,7 +51,7 @@
 
     #block(inset: (y: 1em))[
       #heading(outlined: false, {
-      set text(1.2em)
+        set text(1.2em)
 
         title
       })

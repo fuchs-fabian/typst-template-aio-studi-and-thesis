@@ -131,10 +131,10 @@ user-story-title = "Titel"
 user-story-acceptance-criteria = "Akzeptanzkriterien"
 
 # Headings
-abstract = "Abstract"
+abstract = "Kurzfassung"
 list-of-figures = "Abbildungsverzeichnis"
-list-of-abbreviations = "Abkürzungsverzeichnis"
+list-of-abbreviations = "Akronyme"
 list-of-formulas = "Formelverzeichnis"
 list-of-tables = "Tabellenverzeichnis"
 literature-and-bibliography = "Literatur- und Quellenverzeichnis"
-list-of-attachements = "Anlagenverzeichnis"
+list-of-attachements = "Anhang"
