@@ -21,15 +21,15 @@
 
 // Default font
 #let default-font = (
-  "Roboto",   // typst.app
-  "Calibri",  // Windows
-  "Arial",    // macOS
-  "Carlito",  // Linux
+  "Roboto", // typst.app
+  "Calibri", // Windows
+  "Arial", // macOS
+  "Carlito", // Linux
 )
 
 // Custom figure kinds
 #let custom-figure-kind = (
-  formula: "formula"
+  formula: "formula",
 )
 
 // Colors
@@ -54,20 +54,20 @@
     title: none,
     target: target,
     indent: indent,
-    depth: depth
+    depth: depth,
   )
 }
 
 // Signing
 #let signing(text: none) = {
-  import "dictionary.typ": txt-location, txt-date, txt-author-signature
-  
+  import "dictionary.typ": txt-author-signature, txt-date, txt-location
+
   v(1fr)
-    
+
   let gutter = 30pt
   let stroke = 0.5pt
   let columns = (1.2fr, 2fr)
-    
+
   grid(
     columns: columns,
     gutter: gutter,
@@ -76,7 +76,7 @@
   )
 
   v(-5pt)
-  
+
   grid(
     columns: columns,
     gutter: gutter,
@@ -93,8 +93,9 @@
 // TODO handling - Reference: https://github.com/typst/typst/issues/662#issuecomment-1516709607
 #let txt-todo = text(size: 1.2em, emphasized(fill: red, "TODO"))
 
-#let todo(it) = [
+#let TODO(it) = [
   #if is-not-none-or-empty(it) {
     text([#txt-todo: #[#it <todo>]], red)
   }
 ]
+

@@ -1,6 +1,4 @@
-#import "packages.typ": package
-
-#import package("linguify"): set-database as initialize-dictionary, linguify
+#import "@preview/linguify:0.5.0": linguify, set-database as initialize-dictionary
 
 #let lang-data = toml("lang.toml")
 #let use-dictionary() = initialize-dictionary(lang-data)
@@ -54,7 +52,7 @@
 // Helper to retrieve raw strings for PDF bookmarks (linguify returns content, which breaks bookmarks)
 #let get-lang-str(
   lang: "en",
-  key
+  key,
 ) = {
   let lang-map = lang-data.at("lang")
   let val = lang-map.at(lang, default: none)
@@ -73,3 +71,4 @@ Used keys for headings:
 - literature-and-bibliography
 - list-of-attachements
 */
+
