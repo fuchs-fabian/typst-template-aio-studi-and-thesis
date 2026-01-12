@@ -36,7 +36,6 @@
     date: "DATUM",
   ),
   abstract: none,
-  abstract-function: none,
   list-of-abbreviations: none,
   literature-and-bibliography: none,
   attachements: none,
@@ -55,7 +54,7 @@
     subtitle: none,
     date: submission.date,
     version: none,
-    thesis-compliant: true,
+    degree: degree,
 
     // Format
     side-margins: (
@@ -78,7 +77,7 @@
     background-color: background-color,
 
     // Cover sheet
-    custom-cover-sheet: get-cover-sheet(
+    cover-sheet: get-cover-sheet(
       title: title,
       author: author,
       degree: degree,
@@ -92,17 +91,9 @@
       thesis_number: thesis_number,
     ),
 
-    // Declaration
-    custom-declaration: get-declaration-of-independence(
-      title: title,
-      degree-level: degree.level,
-      location: submission.location,
-      date: submission.date,
-    ),
+    location: submission.location,
 
-    // Abstract (eines von beiden)
-    abstract: abstract, // Setze es auf none, wenn es nicht angezeigt werden soll // TODO: kontrollieren / überprüfen
-    abstract-function: abstract-function,
+    abstract: abstract,
 
     // Outlines
     outlines-indent: 1em,

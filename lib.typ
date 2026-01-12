@@ -19,7 +19,7 @@
   subtitle: none,
   date: none,
   version: none,
-  thesis-compliant: false,
+  degree: "Bachelor",
   // Format
   side-margins: (
     left: 3.5cm, // required
@@ -39,44 +39,16 @@
   text-color: dark-grey,
   background-color: light-blue,
   // Cover sheet
-  custom-cover-sheet: none,
-  cover-sheet: (
-    // none
-    university: (
-      // none
-      name: none, // required
-      street: none, // required
-      city: none, // required
-      logo: none,
-    ),
-    employer: (
-      // none
-      name: none, // required
-      street: none, // required
-      city: none, // required
-      logo: none,
-    ),
-    cover-image: none,
-    description: none,
-    faculty: none,
-    programme: none,
-    semester: none,
-    course: none,
-    examiner: none,
-    submission-date: none,
-  ),
-  // Declaration
-  custom-declaration: none,
-  declaration-on-the-final-thesis: (
-    // none
-    legal-reference: none, // required
-    thesis-name: none, // required
-    consent-to-publication-in-the-library: none, // required | true, false
-    genitive-of-university: none, // required
-  ),
+  cover-sheet: none,
+  cover-image: none,
+  description: none,
+  faculty: none,
+  programme: none,
+  semester: none,
+  course: none,
+  location: "ORT",
   // Abstract
   abstract: none,
-  abstract-function: none,
   // Outlines
   outlines-indent: 1em,
   depth-toc: 4, // none to disable
@@ -108,10 +80,9 @@
 ) = {
   import "@preview/hydra:0.6.2": hydra
   import "@preview/glossy:0.9.0": *
+  import "declaration-of-independence.typ": *
 
   import "dictionary.typ": *
-  import "cover_sheet.typ": *
-  import "declaration_on_the_final_thesis.typ": *
 
   // Metadata
   let date-format = if lang == "de" { "[day].[month].[year]" } else { "[day]/[month]/[year]" }
@@ -130,9 +101,8 @@
       let odd = calc.odd(here().page())
 
       align(
-        if odd {right} else {left},
-        text(size: 8.5pt,
-        hydra(if not odd {1} else {2}))
+        if odd { right } else { left },
+        text(size: 8.5pt, hydra(if not odd { 1 } else { 2 })),
       )
     },
     footer: context {
@@ -144,26 +114,28 @@
         h(1fr)
       }
 
-      text(fill: text-color, 
-        move(
-          dx: -1%,
+      text(fill: text-color, move(
+        dx: 11mm * if odd { 1 } else { -1 },
+        {
+          if odd {
+            h(1fr)
+          }
+
           box(
             height: 1.5em,
-            inset: (top: 0.2em, left: if odd {0.25em} else {0em}, right: if not odd {0.25em} else {0em}),
-            stroke: (left: if odd {1.5pt + black}, right: if not odd {1.5pt + black}),
+            inset: (top: 0.2em, left: if odd { 0.25em } else { 0em }, right: if not odd { 0.25em } else { 0em }),
+            stroke: (left: if odd { 1.5pt + black }, right: if not odd { 1.5pt + black }),
             [
-              #cnt#v(1fr)
-            ]
+              #cnt
+            ],
           )
-        )
-      )
 
-      // TODO: shift outside of text
-
-      if not odd {
-        h(1fr)
-      }
-    }
+          if not odd {
+            h(1fr)
+          }
+        },
+      ))
+    },
   )
 
   set text(
@@ -174,6 +146,15 @@
   )
 
   show heading: it => text(font: font-heading, it)
+
+  set quote(block: true)
+  show quote: body => {
+    box(stroke: (left: 3pt + luma(221)))[
+      #v(0.5em)
+      #pad(left: 0.5em, body)
+      #v(0.5em)
+    ]
+  }
 
   use-dictionary()
 
@@ -194,35 +175,8 @@
   }
 
   // Cover Sheet
-  if is-not-none-or-empty(custom-cover-sheet) == false and is-not-none-or-empty(cover-sheet) {
-    let cover-sheet-dict-contains-key(key) = {
-      return dict-contains-key(dict: cover-sheet, key)
-    }
-
-    get-cover-sheet(
-      primary-color: primary-color,
-      secondary-color: secondary-color,
-      text-color: text-color,
-      background-color: background-color,
-      visualise-content-boxes: (flag: false, fill: background-color, stroke: text-color),
-      university: if cover-sheet-dict-contains-key("university") { cover-sheet.university },
-      employer: if cover-sheet-dict-contains-key("employer") { cover-sheet.employer },
-      cover-image: if cover-sheet-dict-contains-key("cover-image") { cover-sheet.cover-image },
-      date: date,
-      version: version,
-      title: title,
-      subtitle: subtitle,
-      description: if cover-sheet-dict-contains-key("description") { cover-sheet.description },
-      authors: authors,
-      faculty: if cover-sheet-dict-contains-key("faculty") { cover-sheet.faculty },
-      programme: if cover-sheet-dict-contains-key("programme") { cover-sheet.programme },
-      semester: if cover-sheet-dict-contains-key("semester") { cover-sheet.semester },
-      course: if cover-sheet-dict-contains-key("course") { cover-sheet.course },
-      examiner: if cover-sheet-dict-contains-key("examiner") { cover-sheet.examiner },
-      submission-date: if cover-sheet-dict-contains-key("submission-date") { cover-sheet.submission-date },
-    )
-  } else {
-    custom-cover-sheet
+  if is-not-none-or-empty(cover-sheet) {
+    cover-sheet
   }
   pagebreak()
 
@@ -232,9 +186,7 @@
   show heading.where(level: 1): it => {
     let is-num = it.numbering != none
 
-    let br = if not thesis-compliant {
-      none
-    } else if is-num {
+    let br = if is-num {
       pagebreak(weak: true)
     } else {
       colbreak(weak: true)
@@ -243,28 +195,7 @@
     br + it + v(h1-spacing)
   }
 
-  set page(
-    numbering: "1",
-    // header: context { // NOTE: ehemalige Kopfzeile
-    //   if thesis-compliant {
-    //     align(
-    //       left,
-    //       text(weight: "bold", size: 8.5pt)[
-    //         #let h1 = hydra(1, skip-starting: false)
-    //
-    //         #let numbered-heading = to-string(h1).split(regex("[.]\s")).at(1, default: none)
-    //         #if numbered-heading != none {
-    //           numbered-heading
-    //         } else {
-    //           h1
-    //         }
-    //       ],
-    //     )
-    //     v(-1em)
-    //     line(length: 100%, stroke: 1.2pt + text-color)
-    //   }
-    // },
-  )
+  set page(numbering: "1")
 
   set par(
     leading: line-spacing,
@@ -306,60 +237,34 @@
   show link: set text(fill: secondary-color.darken(60%))
 
   // Declaration
-  if is-not-none-or-empty(custom-declaration) {
-    page(
-      header: "",
-      footer: "",
-    )[
-      #custom-declaration
-    ]
-  } else if thesis-compliant and is-not-none-or-empty(declaration-on-the-final-thesis) {
-    page(
-      header: "",
-      footer: "",
-    )[
-      #get-declaration-on-the-final-thesis(
-        lang: lang,
-        legal-reference: declaration-on-the-final-thesis.legal-reference,
-        thesis-name: declaration-on-the-final-thesis.thesis-name,
-        consent-to-publication-in-the-library: declaration-on-the-final-thesis.consent-to-publication-in-the-library,
-        genitive-of-university: declaration-on-the-final-thesis.genitive-of-university,
-      )
-    ]
-  }
-
-  counter(page).update(1)
+  roman-page[#get-declaration-of-independence(
+    title: title,
+    degree-level: degree.level,
+    location: location,
+    date: date,
+  )]
 
   // Abstract
-  if is-not-none-or-empty(abstract) or is-not-none-or-empty(abstract-function) {
+  if is-not-none-or-empty(abstract) {
     roman-page[
       #heading(depth: 1, bookmarked: true)[ #get-heading-str("abstract") ]
 
-      #if is-not-none-or-empty(abstract) {
-        abstract
-      } else {
-        abstract-function()
-      }
+      #abstract()
     ]
   }
 
   // Table of contents (TOC)
-  if thesis-compliant or is-not-none-or-empty(depth-toc) {
-    page(
-      numbering: none,
-    )[
-      #show outline.entry.where(level: 1): it => {
-        v(1.5em, weak: true)
-        upper(strong(it))
-      }
+  roman-page[
+    #show outline.entry.where(level: 1): it => {
+      v(1.5em, weak: true)
+      upper(strong(it))
+    }
 
-      #outline(
-        indent: outlines-indent,
-        // If `depth-toc` is set to `none`, then it will be set to 4 if `thesis-compliant` is true
-        depth: if is-not-none-or-empty(depth-toc) { depth-toc } else { 4 },
-      )
-    ]
-  }
+    #outline(
+      indent: outlines-indent,
+      depth: if is-not-none-or-empty(depth-toc) { depth-toc } else { 4 },
+    )
+  ]
 
   // List of Formulas
   show math.equation.where(block: true): it => rect(width: 100%, fill: background-color)[
@@ -385,19 +290,22 @@
   // Body
   counter(page).update(1)
 
-  let todos() = context {
-    let elems = query(<todo>)
+  if show-list-of-todos {
+    page(numbering: "1")[
 
-    if elems.len() == 0 { return }
+      #context {
+        let elems = query(<todo>)
 
-    heading(depth: 1)[ TODOs ]
+        if elems.len() == 0 { return }
 
-    for body in elems {
-      text([+ #link(body.location(), body.text)], red)
-    }
+        heading(depth: 1)[ TODOs ]
+
+        for body in elems {
+          text([+ #link(body.location(), body.text)], red)
+        }
+      }
+    ]
   }
-
-  if show-list-of-todos { todos() }
 
   set heading(numbering: "1.1")
 
@@ -426,16 +334,14 @@
   }
 
   // List of Figures
-  if thesis-compliant or show-list-of-figures {
-    page[
-      #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-figures") ]
+  page[
+    #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-figures") ]
 
-      #simple-outline(
-        indent: outlines-indent,
-        target: figure.where(kind: image),
-      )
-    ]
-  }
+    #simple-outline(
+      indent: outlines-indent,
+      target: figure.where(kind: image),
+    )
+  ]
 
   // List of Formulas
   if show-list-of-formulas {

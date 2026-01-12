@@ -30,6 +30,7 @@
 ) = {
   set text(size: 11pt)
   set par(spacing: 0.75em)
+  set page(header: none, footer: none)
 
   align(center)[
     #box(university.logo, height: 12mm)
