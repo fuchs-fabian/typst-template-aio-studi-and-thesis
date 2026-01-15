@@ -126,6 +126,7 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
     semester: none,
     course: none,
     examiner: none,
+    second-examiner: none,
     submission-date: none
   ),
 
