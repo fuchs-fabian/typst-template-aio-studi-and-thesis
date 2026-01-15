@@ -65,6 +65,7 @@
     semester: none,
     course: none,
     examiner: none,
+    second-examiner: none,
     submission-date: none
   ),
 
@@ -175,6 +176,7 @@
       semester: if cover-sheet-dict-contains-key("semester") { cover-sheet.semester },
       course: if cover-sheet-dict-contains-key("course") { cover-sheet.course },
       examiner: if cover-sheet-dict-contains-key("examiner") { cover-sheet.examiner },
+      second-examiner: if cover-sheet-dict-contains-key("second-examiner") { cover-sheet.second-examiner },
       submission-date: if cover-sheet-dict-contains-key("submission-date") { cover-sheet.submission-date }
     )
   } else {

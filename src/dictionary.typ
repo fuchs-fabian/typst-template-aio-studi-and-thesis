@@ -12,6 +12,7 @@
 #let txt-semester = linguify("semester")
 #let txt-course = linguify("course")
 #let txt-examiner = linguify("examiner")
+#let txt-second-examiner = linguify("second-examiner")
 #let txt-submission-date = linguify("submission-date")
 
 // Declaration on the Final Thesis
