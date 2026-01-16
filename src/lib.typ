@@ -404,7 +404,15 @@
   
   counter(page).update(1)
 
-  if show-list-of-todos { big-todo.todo_outline }
+  let todos() = context {
+    let todo-count = query(figure.where(kind: "todo")).len();
+
+    if todo-count == 0 { return }
+
+    big-todo.todo_outline
+  }
+
+  if show-list-of-todos { todos() }
   
   set heading(numbering: "1.1.")
   
