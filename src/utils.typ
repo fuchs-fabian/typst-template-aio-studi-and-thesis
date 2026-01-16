@@ -24,15 +24,15 @@
 
 // Default font
 #let default-font = (
-  "Roboto", // typst.app
-  "Calibri", // Windows
-  "Arial", // macOS
-  "Carlito", // Linux
+  "Roboto",   // typst.app
+  "Calibri",  // Windows
+  "Arial",    // macOS
+  "Carlito",  // Linux
 )
 
 // Custom figure kinds
 #let custom-figure-kind = (
-  formula: "formula",
+  formula: "formula"
 )
 
 // Colors
@@ -57,20 +57,20 @@
     title: none,
     target: target,
     indent: indent,
-    depth: depth,
+    depth: depth
   )
 }
 
 // Signing
 #let signing(text: none) = {
-  import "dictionary.typ": txt-author-signature, txt-date, txt-location
-
+  import "dictionary.typ": txt-location, txt-date, txt-author-signature
+  
   v(1fr)
-
+    
   let gutter = 30pt
   let stroke = 0.5pt
   let columns = (1.2fr, 2fr)
-
+    
   grid(
     columns: columns,
     gutter: gutter,
@@ -79,7 +79,7 @@
   )
 
   v(-5pt)
-
+  
   grid(
     columns: columns,
     gutter: gutter,
