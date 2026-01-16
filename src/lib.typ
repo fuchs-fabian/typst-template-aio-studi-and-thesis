@@ -405,11 +405,15 @@
   counter(page).update(1)
 
   let todos() = context {
-    let todo-count = query(figure.where(kind: "todo")).len();
+    let todo-outline = big-todo.todo_outline
+    let todo-elems = query(todo-outline.target)
 
-    if todo-count == 0 { return }
-
-    big-todo.todo_outline
+    if todo-elems.len() == 0 { return }
+    
+    show outline: set heading(outlined: true, depth: 1)
+    pagebreak(weak: true)
+    todo-outline
+    pagebreak(weak: true)
   }
 
   if show-list-of-todos { todos() }
