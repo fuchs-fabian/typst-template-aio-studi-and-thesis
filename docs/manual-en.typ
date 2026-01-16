@@ -128,6 +128,7 @@ If certain dictionaries are used, care must be taken to ensure that parameters w
     semester: none,
     course: none,
     examiner: none,
+    second-examiner: none,
     submission-date: none
   ),
 

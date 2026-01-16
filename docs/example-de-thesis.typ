@@ -60,6 +60,7 @@
     semester: "SoSe2024",
     course: "Templates with Typst",
     examiner: "Prof. Dr.-Ing Mustermann",
+    second-examiner: "Prof. Dr.-Ing Musterfrau",
     submission-date: "30.07.2024",
   ),
 

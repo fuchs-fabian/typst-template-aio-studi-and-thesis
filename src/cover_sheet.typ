@@ -45,6 +45,7 @@
   semester: none,
   course: none,
   examiner: none,
+  second-examiner: none,
   submission-date: none
 ) = {
   import "utils.typ": *
@@ -242,6 +243,9 @@
       
       [ #get-content(examiner)[ #get-info-description(txt-examiner) ] ],
       [ #get-content(examiner)[ #examiner ] ],
+
+      [ #get-content(second-examiner)[ #get-info-description(txt-second-examiner) ] ],
+      [ #get-content(second-examiner)[ #second-examiner ] ],
       
       [ #get-content(submission-date)[ #get-info-description(txt-submission-date) ] ],
       [ #get-content(submission-date)[ #submission-date ] ],

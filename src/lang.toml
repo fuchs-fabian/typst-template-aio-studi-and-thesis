@@ -10,6 +10,7 @@ programme = "Programme"
 semester = "Semester"
 course = "Course"
 examiner = "Examiner"
+second-examiner = "Second Examiner"
 submission-date = "Submission date"
 
 # Declaration on the Final Thesis
@@ -79,6 +80,7 @@ programme = "Studiengang"
 semester = "Semester"
 course = "Kurs"
 examiner = "Prüfer/in"
+second-examiner = "Zweitprüfer/in"
 submission-date = "Abgabedatum"
 
 # Declaration on the Final Thesis
