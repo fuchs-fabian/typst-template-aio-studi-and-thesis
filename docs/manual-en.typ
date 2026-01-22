@@ -150,7 +150,8 @@ If certain dictionaries are used, care must be taken to ensure that parameters w
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
-    (
+    back-references: true,
+    items: (
       key: "",    // required
       short: "",  // required
       plural: "",

@@ -148,7 +148,8 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
-    (
+    back-references: true,
+    items: (
       key: "",    // required
       short: "",  // required
       plural: "",

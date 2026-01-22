@@ -87,14 +87,17 @@
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
-    (
-      key: "",    // required
-      short: "",  // required
-      plural: "",
-      long: "",
-      longplural: "",
-      description: none,
-      group: "",
+    back-references: true,
+    items: (
+      (
+        key: "",    // required
+        short: "",  // required
+        plural: "",
+        long: "",
+        longplural: "",
+        description: none,
+        group: "",
+      ),
     ),
   ),
   show-list-of-formulas: false,
@@ -316,12 +319,13 @@
 
   // List of Abbreviations
   if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+    let abbreviations = list-of-abbreviations.items
     show: make-glossary
-    if is-not-none-or-empty(list-of-abbreviations.at(0).key) and is-not-none-or-empty(list-of-abbreviations.at(0).short) {
+    if is-not-none-or-empty(abbreviations.at(0).key) and is-not-none-or-empty(abbreviations.at(0).short) {
       roman-page[
         #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #register-glossary(list-of-abbreviations)
-        #print-glossary(list-of-abbreviations)
+        #register-glossary(abbreviations)
+        #print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
       ]
     }
   }
