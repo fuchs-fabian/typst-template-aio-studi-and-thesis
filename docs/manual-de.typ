@@ -150,13 +150,15 @@ Wenn bestimmte Dictionaries verwendet werden, muss darauf geachtet werden, dass 
   list-of-abbreviations: (
     back-references: true,
     items: (
-      key: "",    // required
-      short: "",  // required
-      plural: "",
-      long: "",
-      longplural: "",
-      description: none,
-      group: "",
+      (
+        key: "",    // required
+        short: "",  // required
+        plural: "",
+        long: "",
+        longplural: "",
+        description: none,
+        group: "",
+      ),
     ),
   ),
   show-list-of-formulas: false,
