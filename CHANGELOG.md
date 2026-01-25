@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added `second-examiner` to `cover-sheet` options
+
+### Changed
+
+- BREAKING: Updated `list-of-abbreviations` structure to support back-references (requires `items` wrapper)
+
 ## [0.1.4] - 2025-12-05
 
 ### Fixed
