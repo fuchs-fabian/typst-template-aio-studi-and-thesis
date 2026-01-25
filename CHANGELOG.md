@@ -6,11 +6,11 @@
 
 ### Added
 
-- Added `second-examiner` to `cover-sheet` options
+- Added `second-examiner` to `cover-sheet` options, thanks [@tresonic]
 
 ### Changed
 
-- BREAKING: Updated `list-of-abbreviations` structure to support back-references (requires `items` wrapper)
+- BREAKING: Updated `list-of-abbreviations` structure to support back-references (requires `items` wrapper), thanks [@tresonic]
 
 ### Fixed
 
