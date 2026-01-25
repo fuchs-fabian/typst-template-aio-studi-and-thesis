@@ -279,8 +279,15 @@
 
   counter(page).update(1)
 
+  show: body => {
+    if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+      make-glossary(body)
+    } else {
+      body
+    }
+  }
+
   if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
-    show: make-glossary
     register-glossary(list-of-abbreviations.items)
   }
 
@@ -329,11 +336,7 @@
     if is-not-none-or-empty(abbreviations.at(0).key) and is-not-none-or-empty(abbreviations.at(0).short) {
       roman-page[
         #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #context {
-          set align(left)
-          set par(justify: false)
-          print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
-        }
+        #print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
       ]
     }
   }
