@@ -329,9 +329,11 @@
     if is-not-none-or-empty(abbreviations.at(0).key) and is-not-none-or-empty(abbreviations.at(0).short) {
       roman-page[
         #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #align(left)[
-          #print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
-        ]
+        #context {
+          set align(left)
+          set par(justify: false)
+          print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
+        }
       ]
     }
   }
