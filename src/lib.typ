@@ -149,6 +149,11 @@
   
   show: codly-init.with()
 
+  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+    show: make-glossary
+    register-glossary(list-of-abbreviations.items)
+  }
+
   if is-not-none-or-empty(date) == false {
     date = datetime.today().display(date-format)
   }
@@ -320,11 +325,10 @@
   // List of Abbreviations
   if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
     let abbreviations = list-of-abbreviations.items
-    show: make-glossary
+    
     if is-not-none-or-empty(abbreviations.at(0).key) and is-not-none-or-empty(abbreviations.at(0).short) {
       roman-page[
         #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #register-glossary(abbreviations)
         #print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
       ]
     }
