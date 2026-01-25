@@ -274,16 +274,19 @@ Damit Abkürzungen im Abkürzungsverzeichnis auftauchen, müssen lediglich 2 Sch
 
 ```Typst
 list-of-abbreviations: (
-  (
-    key: "uoats",
-    short: "UOATS",
-    plural: "",
-    long: "University of Applied Typst Sciences",
-    longplural: "",
-    description: [
-      Universität, welche eigentlich nicht existiert
-    ],
-    group: "University",
+  back-references: true,
+  items: (
+    (
+      key: "uoats",
+      short: "UOATS",
+      plural: "",
+      long: "University of Applied Typst Sciences",
+      longplural: "",
+      description: [
+        Universität, welche eigentlich nicht existiert
+      ],
+      group: "University",
+    ),
   ),
 )
 ```
