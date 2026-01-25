@@ -95,7 +95,6 @@
 
 #let todo-size = 1.2em
 
-// TODO handling - Reference: https://github.com/typst/typst/issues/662#issuecomment-1516709607
 #let txt-todo = text(size: todo-size, emphasized(fill: red, "TODO"))
 
 #let todo(it, inline: true, big_text: 40pt, small_text: todo-size, gap: 2mm) = big-todo.todo(
