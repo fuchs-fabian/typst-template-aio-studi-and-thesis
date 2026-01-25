@@ -1,3 +1,6 @@
+#import "packages.typ": package
+#import package("big-todo") as big-todo
+
 // Validation if content is not none and not empty
 #let is-not-none-or-empty(content) = if content != none and content != "" { return true } else { return false }
 
@@ -90,11 +93,14 @@
   text(style: "normal", weight: "bold", tracking: 0pt, fill: fill, it)
 }
 
-// TODO handling - Reference: https://github.com/typst/typst/issues/662#issuecomment-1516709607
-#let txt-todo = text(size: 1.2em, emphasized(fill: red, "TODO"))
+#let todo-size = 1.2em
 
-#let todo(it) = [
-  #if is-not-none-or-empty(it) {
-    text([#txt-todo: #[#it <todo>]], red)
-  }
-]
+#let txt-todo = text(size: todo-size, emphasized(fill: red, "TODO"))
+
+#let todo(it, inline: true, big_text: 40pt, small_text: todo-size, gap: 2mm) = big-todo.todo(
+  it,
+  inline: inline,
+  big_text: big_text,
+  small_text: small_text,
+  gap: gap,
+)

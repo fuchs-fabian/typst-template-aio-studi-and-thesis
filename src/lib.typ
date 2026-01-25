@@ -3,6 +3,8 @@
 #import package("citegeist"): load-bibliography
 #import package("codly"): *
 #import package("glossarium"): gls, glspl
+#import package("big-todo") as big-todo
+
 
 #import "utils.typ": *
 
@@ -420,15 +422,15 @@
   counter(page).update(1)
 
   let todos() = context {
-    let elems = query(<todo>)
+    let todo-outline = big-todo.todo_outline
+    let todo-elems = query(todo-outline.target)
 
-    if elems.len() == 0 { return }
-
-    heading(depth: 1)[ TODOs ]
-  
-    for body in elems {
-      text([+ #link(body.location(), body.text)], red)
-    }
+    if todo-elems.len() == 0 { return }
+    
+    show outline: set heading(outlined: true, depth: 1)
+    pagebreak(weak: true)
+    todo-outline
+    pagebreak(weak: true)
   }
 
   if show-list-of-todos { todos() }
