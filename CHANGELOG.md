@@ -10,7 +10,7 @@
 
 ### Changed
 
-- BREAKING: Updated `list-of-abbreviations` structure to support back-references (requires `items` wrapper), thanks [@tresonic]
+- BREAKING: Updated `list-of-abbreviations` structure to support back-references (requires `items` wrapper), thanks [@tresonic] (#24)
 
 ### Fixed
 
