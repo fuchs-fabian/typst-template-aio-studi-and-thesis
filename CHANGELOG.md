@@ -12,6 +12,10 @@
 
 - BREAKING: Updated `list-of-abbreviations` structure to support back-references (requires `items` wrapper)
 
+### Fixed
+
+- Fixed usage of abbreviations in `abstract` by initializing glossary earlier
+
 ## [0.1.4] - 2025-12-05
 
 ### Fixed
