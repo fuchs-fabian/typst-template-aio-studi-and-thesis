@@ -150,14 +150,17 @@ If certain dictionaries are used, care must be taken to ensure that parameters w
   show-list-of-figures: false,
   show-list-of-abbreviations: true,
   list-of-abbreviations: (
-    (
-      key: "",    // required
-      short: "",  // required
-      plural: "",
-      long: "",
-      longplural: "",
-      description: none,
-      group: "",
+    back-references: true,
+    items: (
+      (
+        key: "",    // required
+        short: "",  // required
+        plural: "",
+        long: "",
+        longplural: "",
+        description: none,
+        group: "",
+      ),
     ),
   ),
   show-list-of-formulas: false,

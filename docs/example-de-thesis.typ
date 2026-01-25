@@ -84,24 +84,27 @@
   show-list-of-figures: false, // Wird trotzdem angezeigt, da es i.d.R. Pflicht ist
   show-list-of-abbreviations: true, // Taucht nur auf, wenn tatsächlich mit gls Abkürzungen im Text aufgerufen werden
   list-of-abbreviations: (
-    (
-      key: "uoats",
-      short: "UOATS",
-      plural: "",
-      long: "University of Applied Typst Sciences",
-      longplural: "",
-      description: [
-        Universität, welche eigentlich nicht existiert
-      ],
-      group: "University",
-    ),
-    (
-      key: "repo-vorlage",
-      short: "aio-studi-and-thesis",
-      long: "Repository der aktuellen Typst-Vorlage",
-      description: [
-        #link("https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis")
-      ]
+    back-references: true,
+    items: (
+      (
+        key: "uoats",
+        short: "UOATS",
+        plural: "",
+        long: "University of Applied Typst Sciences",
+        longplural: "",
+        description: [
+          Universität, welche eigentlich nicht existiert
+        ],
+        group: "University",
+      ),
+      (
+        key: "repo-vorlage",
+        short: "aio-studi-and-thesis",
+        long: "Repository der aktuellen Typst-Vorlage",
+        description: [
+          #link("https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis")
+        ]
+      ),
     ),
   ),
   show-list-of-formulas: true,
