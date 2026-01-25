@@ -14,6 +14,7 @@
 
 ### Fixed
 
+- Fixed list of todos rendering and issues with special characters, thanks [@professionalowo] (#20)
 - Fixed usage of abbreviations in `abstract`, headings, and figures by applying the glossary show rule to the entire document body
 
 ## [0.1.4] - 2025-12-05
@@ -91,6 +92,7 @@ Below are the GitHub profile links of contributors
 [@SillyFreak]: https://github.com/SillyFreak
 [@fritz-m-h]: https://github.com/fritz-m-h
 [@tresonic]: https://github.com/tresonic
+[@professionalowo]: https://github.com/professionalowo
 
 <!--
 Below are used Typst package links
