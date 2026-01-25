@@ -149,11 +149,6 @@
   
   show: codly-init.with()
 
-  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
-    show: make-glossary
-    register-glossary(list-of-abbreviations.items)
-  }
-
   if is-not-none-or-empty(date) == false {
     date = datetime.today().display(date-format)
   }
@@ -257,6 +252,11 @@
   show figure.where(kind: custom-figure-kind.formula): set figure(supplement: txt-supplement-formula, numbering: "1")
 
   show link: set text(fill: secondary-color.darken(60%))
+
+  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+    show: make-glossary
+    register-glossary(list-of-abbreviations.items)
+  }
 
   // Declaration
   if is-not-none-or-empty(custom-declaration) {
