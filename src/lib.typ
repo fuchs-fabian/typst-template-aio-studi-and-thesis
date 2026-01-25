@@ -253,11 +253,6 @@
 
   show link: set text(fill: secondary-color.darken(60%))
 
-  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
-    show: make-glossary
-    register-glossary(list-of-abbreviations.items)
-  }
-
   // Declaration
   if is-not-none-or-empty(custom-declaration) {
     page(
@@ -283,6 +278,11 @@
   }
 
   counter(page).update(1)
+
+  if show-list-of-abbreviations and is-not-none-or-empty(list-of-abbreviations) {
+    show: make-glossary
+    register-glossary(list-of-abbreviations.items)
+  }
 
   // Abstract
   if is-not-none-or-empty(abstract) {
@@ -329,7 +329,9 @@
     if is-not-none-or-empty(abbreviations.at(0).key) and is-not-none-or-empty(abbreviations.at(0).short) {
       roman-page[
         #heading(depth: 1, bookmarked: true)[ #get-heading-str("list-of-abbreviations") ]
-        #print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
+        #align(left)[
+          #print-glossary(abbreviations, disable-back-references: not list-of-abbreviations.back-references)
+        ]
       ]
     }
   }
