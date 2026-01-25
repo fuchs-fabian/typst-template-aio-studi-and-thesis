@@ -14,7 +14,7 @@
 
 ### Fixed
 
-- Fixed usage of abbreviations in `abstract` by initializing glossary earlier
+- Fixed usage of abbreviations in `abstract`, headings, and figures by applying the glossary show rule to the entire document body
 
 ## [0.1.4] - 2025-12-05
 
