@@ -5,7 +5,7 @@
   authors: (
     (name: "Fabian Fuchs"),
   ),
-  title: "aio-studi-and-thesis v0.1.4",
+  title: "aio-studi-and-thesis v0.2.0",
   subtitle: "English Manual",
   cover-sheet: (
     cover-image: none,

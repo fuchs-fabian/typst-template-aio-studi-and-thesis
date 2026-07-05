@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-05
+
 ### Added
 
 - Added `second-examiner` to `cover-sheet` options, thanks [@tresonic]
@@ -80,7 +82,9 @@ to the corresponding tag on GitHub, or the diff
 in comparison to the previous release
 -->
 
-[Unreleased]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.2.0
+[0.1.4]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.4
 [0.1.3]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.3
 [0.1.2]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.2
 [0.1.1]: https://github.com/fuchs-fabian/typst-template-aio-studi-and-thesis/releases/tag/v0.1.1
